@@ -18,4 +18,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Cruises.Models\Cruises.Models.csproj" />
+  </ItemGroup>
+
 </Project>

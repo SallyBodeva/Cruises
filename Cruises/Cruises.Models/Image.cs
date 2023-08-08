@@ -12,8 +12,7 @@ namespace Cruises.Models
 
         [Required]
         public string Url { get; set; }
-
-        public int ImageId { get; set; }
+        public int ShipId { get; set; }
         public virtual Ship Ship { get; set; }
     }
 }
