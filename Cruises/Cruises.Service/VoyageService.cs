@@ -106,6 +106,23 @@
                 return $"{nameof(Voyage)} not found!";
             }
         }
-       // public string UpdateTicketPrice()
+        public string UpdateTicketPriceByVoyageId(int id, decimal newTicketPrice)
+        {
+            using (context= new AppDbContext())
+            {
+                Voyage v = this.context.Voyages.FirstOrDefault(x => x.Id == id);
+                if (v!=null)
+                {
+                    v.TicketPrice = newTicketPrice;
+                    context.Update(v);
+                    context.SaveChanges();
+                    return $"{nameof(Voyage)} from {v.Harbour.Name} to {v.DestinationHarbour.Name} has new price for a ticke!";
+                }
+                else
+                {
+                    return "This voyage does not exist...";
+                }
+            }
+        }
     }
 }
