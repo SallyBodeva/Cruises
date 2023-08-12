@@ -1,12 +1,11 @@
-﻿using Cruises.Data;
-using Cruises.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Cruises.Service
+﻿namespace Cruises.Service
 {
+    using Cruises.Data;
+    using Cruises.Models;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
     public class VoyageService
     {
         private AppDbContext context;
@@ -74,5 +73,39 @@ namespace Cruises.Service
                 return $"{nameof(Voyage)} from {v.Harbour.Name} harbour to {v.DestinationHarbour.Name} harbour  is deleted!";
             }
         }
+        public Voyage GetVoyageById(int id)
+        {
+            if (id < 1)
+            {
+                throw new ArgumentException("Invalid v id!");
+            }
+            Voyage v = this.context.Voyages.Find(id);
+            return v;
+        }
+        public string GetVoyageInfo(int id)
+        {
+            Voyage v = null;
+            using (context = new AppDbContext())
+            {
+                v = context.Voyages.Find(id);
+            }
+            if (v != null)
+            {
+                StringBuilder message = new StringBuilder();
+                message.AppendLine($"{nameof(Voyage)} info: ");
+                message.AppendLine($"\tId: {v.Id}");
+                message.AppendLine($"\tFrom: {v.Harbour.Name}");
+                message.AppendLine($"\tTo: {v.DestinationHarbour.Name}");
+                message.AppendLine($"\tDuration: {v.Duration} hours");
+                message.AppendLine($"\tShip: {v.Ship.Name}");
+                message.AppendLine($"\tTicket price: {v.TicketPrice}");
+                return message.ToString().TrimEnd();
+            }
+            else
+            {
+                return $"{nameof(Voyage)} not found!";
+            }
+        }
+       // public string UpdateTicketPrice()
     }
 }

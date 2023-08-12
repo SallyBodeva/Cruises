@@ -1,12 +1,11 @@
-﻿using Cruises.Data;
-using Cruises.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Cruises.Service
+﻿namespace Cruises.Service
 {
+    using Cruises.Data;
+    using Cruises.Models;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
     public class PassengerService
     {
         private AppDbContext context;
