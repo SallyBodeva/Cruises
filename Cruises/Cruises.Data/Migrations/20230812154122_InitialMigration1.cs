@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Cruises.Data.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitialMigration1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -165,7 +165,7 @@ namespace Cruises.Data.Migrations
                     DestinationHarbourId = table.Column<int>(nullable: false),
                     Duration = table.Column<int>(nullable: false),
                     ShipId = table.Column<int>(nullable: false),
-                    TicketPrice = table.Column<int>(nullable: false)
+                    TicketPrice = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {

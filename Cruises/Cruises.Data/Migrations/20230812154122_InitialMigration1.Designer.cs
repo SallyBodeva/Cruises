@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cruises.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230808162253_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20230812154122_InitialMigration1")]
+    partial class InitialMigration1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -263,8 +263,8 @@ namespace Cruises.Data.Migrations
                     b.Property<int>("ShipId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TicketPrice")
-                        .HasColumnType("int");
+                    b.Property<decimal>("TicketPrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 

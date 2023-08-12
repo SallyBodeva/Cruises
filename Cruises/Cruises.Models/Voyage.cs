@@ -17,7 +17,7 @@
 
         public virtual Ship Ship { get; set; }
 
-        public int TicketPrice { get; set; }
+        public decimal TicketPrice { get; set; }
         public virtual ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
     }
 }

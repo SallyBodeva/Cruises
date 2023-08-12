@@ -261,8 +261,8 @@ namespace Cruises.Data.Migrations
                     b.Property<int>("ShipId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TicketPrice")
-                        .HasColumnType("int");
+                    b.Property<decimal>("TicketPrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 

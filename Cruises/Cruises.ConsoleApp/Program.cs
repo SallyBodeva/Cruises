@@ -7,7 +7,6 @@ namespace Cruises.ConsoleApp
     { 
         static void Main()
         {
-
         }
     }
 }
