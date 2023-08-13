@@ -40,16 +40,8 @@
                 message.AppendLine($"Invalid ticket price!");
                 isValid = false;
             }
-            Harbour startHabrour = null;
-            Harbour desHabrour = null;
             using (context = new AppDbContext())
             {
-                startHabrour = context.Harbours.FirstOrDefault(x => x.Id == startHarbourId);
-                desHabrour= context.Harbours.FirstOrDefault(x => x.Id == destinationHarbourId);
-                if (startHabrour==null)
-                {
-                    //To do...
-                }
                 if (isValid)
                 {
                     Voyage v = new Voyage
