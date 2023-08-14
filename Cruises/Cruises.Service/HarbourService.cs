@@ -84,6 +84,30 @@
                 }
             }
         }
+        public string GetAllHarboursInfo(int page = 1, int count = 10)
+        {
+            StringBuilder msg = new StringBuilder();
+            string firstRow = $"| {"Id",-4} | {"Name",-25} | {"City: ",-25} | {"Country",-25} |";
+
+            string line = $"|{new string('-', firstRow.Length - 2)}|";
+
+            using (context = new AppDbContext())
+            {
+                List<Harbour> harbours = context.Harbours.Skip((page - 1) * count).Take(count).ToList();
+                msg.AppendLine(firstRow);
+                msg.AppendLine(line);
+                foreach (var h in harbours)
+                {
+                    string info = $"| {h.Id,-4} | {h.Name,-25} | {h.City.Name,-25} | {h.City.Country,-25} |";
+                    msg.AppendLine(info);
+                    msg.AppendLine(line);
+                }
+                int pageCount = (int)Math.Ceiling(context.Harbours.Count() / (decimal)count);
+                msg.AppendLine($"Page: {page} / {pageCount}");
+            }
+
+            return msg.ToString().TrimEnd();
+        }
 
     }
 

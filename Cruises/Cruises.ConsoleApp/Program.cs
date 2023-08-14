@@ -8,7 +8,7 @@ namespace Cruises.ConsoleApp
         static void Main()
         {
             HarbourService hs = new HarbourService();
-            Console.WriteLine(hs.GetHarbourInfo(1));
+            Console.WriteLine(hs.GetAllHarboursInfo());
         }
     }
 }
