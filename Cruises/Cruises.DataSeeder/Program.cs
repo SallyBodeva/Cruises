@@ -9,7 +9,8 @@ namespace Cruises.DataSeeder
         private static AdditionalService aS = new AdditionalService();
         static void Main()
         {
-            CreateCities();
+            //CreateCities();
+            //CreatеShipTypes();
         }
         public static void CreateCities()
         {
@@ -28,6 +29,18 @@ namespace Cruises.DataSeeder
             for (int i = 0; i < cities.Count; i++)
             {
                 Console.WriteLine(aS.CreateCity(cities[i], countries[i]));
+            }
+        }
+        public static void CreatеShipTypes()
+        {
+            List<string> cruiseShipTypes = new List<string>()
+        {
+            "Cruise Ship","Yacht","Sailing Ship", "Passenger Ferry","Catamaran", "Tall Ship","Ocean Liner","Barge"
+        };
+
+            for (int i = 0; i < cruiseShipTypes.Count; i++)
+            {
+                Console.WriteLine(aS.CreateShipTypes(cruiseShipTypes[i]));
             }
         }
     }

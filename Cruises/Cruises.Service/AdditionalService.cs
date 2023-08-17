@@ -36,9 +36,9 @@
                 if (isValid)
                 {
                     City c = new City()
-                    { 
-                        Name=cityName,
-                        Country=coutryName
+                    {
+                        Name = cityName,
+                        Country = coutryName
                     };
                     this.context.Cities.Add(c);
                     this.context.SaveChanges();
@@ -47,6 +47,26 @@
                 return sb.ToString().TrimEnd();
             }
         }
-       
+        public string CreateShipTypes(string shipType)
+        {
+            StringBuilder sb = new StringBuilder();
+            bool isValid = true;
+            if (string.IsNullOrWhiteSpace(shipType))
+            {
+                sb.AppendLine($"Ship type is not valid!");
+                isValid = false;
+            }
+            using (context= new AppDbContext())
+            {
+                if (isValid)
+                {
+                    ShipType sT = new ShipType() {Name= shipType};
+                    this.context.ShipTypes.Add(sT);
+                    this.context.SaveChanges();
+                    sb.AppendLine($"Ship type - {sT.Name} added successfully");
+                }
+                return sb.ToString().TrimEnd();
+            }
+        }
     }
 }
