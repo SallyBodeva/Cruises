@@ -5,4 +5,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Cruises.Models\Cruises.Models.csproj" />
+    <ProjectReference Include="..\Cruises.Service\Cruises.Service.csproj" />
+  </ItemGroup>
+
 </Project>

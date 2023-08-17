@@ -17,37 +17,36 @@
                 return c;
             }
         }
-        public string CreateReservation(int passengerId, int voyageId, DateTime reservationDate)
+        public string CreateCity(string cityName, string coutryName)
         {
-            StringBuilder message = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             bool isValid = true;
-            if (passengerId < 1)
+            if (string.IsNullOrWhiteSpace(cityName))
             {
-                message.AppendLine("Invalid passenger id");
+                sb.AppendLine($"{nameof(City)} name is not valid!");
                 isValid = false;
             }
-            if (voyageId < 1)
+            if (string.IsNullOrWhiteSpace(coutryName))
             {
-                message.AppendLine("Invalid voyage id");
+                sb.AppendLine($"{nameof(coutryName)} name is not valid!");
                 isValid = false;
             }
-
             using (context = new AppDbContext())
             {
                 if (isValid)
                 {
-                    Reservation r = new Reservation()
+                    City c = new City()
                     { 
-                        PassengerId=passengerId,
-                        VoyageId= voyageId,
-                        ReservationDate= reservationDate
+                        Name=cityName,
+                        Country=coutryName
                     };
-                    context.Reservations.Add(r);
-                    context.SaveChanges();
-                    message.AppendLine($"Passenger got on board with his reservation on {reservationDate:g}");
+                    this.context.Cities.Add(c);
+                    this.context.SaveChanges();
+                    sb.AppendLine($"City - {c.Name} added successfully");
                 }
+                return sb.ToString().TrimEnd();
             }
-            return message.ToString().TrimEnd();
         }
+       
     }
 }

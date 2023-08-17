@@ -7,8 +7,8 @@ namespace Cruises.ConsoleApp
     {
         static void Main()
         {
-            HarbourService hs = new HarbourService();
-            Console.WriteLine(hs.GetAllHarboursInfo());
+            AdditionalService aS = new AdditionalService();
+            Console.WriteLine(aS.CreateCity("Burgas","Bulgaria"));
         }
     }
 }
