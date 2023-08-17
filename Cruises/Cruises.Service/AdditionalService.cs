@@ -68,5 +68,22 @@
                 return sb.ToString().TrimEnd();
             }
         }
+      
+        public List<string> GetCitiesNames()
+        {
+            using (context = new AppDbContext())
+            {
+                List<string> cities = context.Cities.Select(x=>x.Name).ToList();
+                return cities;
+            }
+        }
+        public List<string> GetCountriesNames()
+        {
+            using (context = new AppDbContext())
+            {
+                List<string> cities = context.Cities.Select(x => x.Country).ToList();
+                return cities;
+            }
+        }
     }
 }

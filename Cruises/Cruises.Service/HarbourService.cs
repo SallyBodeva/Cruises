@@ -42,8 +42,8 @@
                     };
                     context.Harbours.Add(h);
                     context.SaveChanges();
+                    message.AppendLine($"Our EnchantedEscala-Cruises has a new harbour to moor at...{h.Name}");
                 }
-                message.AppendLine("Our EnchantedEscala-Cruises has a new harbour to moor at...");
             }
             return message.ToString().TrimEnd();
         }
