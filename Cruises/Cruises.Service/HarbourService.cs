@@ -28,7 +28,7 @@
             City c = null;
             using (context = new AppDbContext())
             {
-                c = this.context.Cities.FirstOrDefault(x => x.Name == name && x.Country == country);
+                c = this.context.Cities.FirstOrDefault(x => x.Name == city && x.Country == country);
                 if (c == null)
                 {
                     c = new City() { Name = city, Country = country };

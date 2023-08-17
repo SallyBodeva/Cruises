@@ -10,8 +10,8 @@ namespace Cruises.ConsoleApp
         {
             AdditionalService aS = new AdditionalService();
             List<string> cities = aS.GetCitiesNames();
-            List<string> countries = aS.GetCitiesNames();
-            Console.WriteLine(string.Join(" ",cities));
+            List<string> countries = aS.GetCountriesNames();
+            Console.WriteLine(string.Join(" ",countries));
         }
     }
 }

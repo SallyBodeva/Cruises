@@ -9,11 +9,13 @@ namespace Cruises.DataSeeder
     {
         private static AdditionalService aS = new AdditionalService();
         private static HarbourService hS = new HarbourService();
+        private static PassengerService pS = new PassengerService();
         static void Main()
         {
             //CreateCities();
             //CreatеShipTypes();
-            CreatеVoyages();
+            //CreatеVoyages();
+            CreatеPassengers();
         }
         public static void CreateCities()
         {
@@ -65,6 +67,26 @@ namespace Cruises.DataSeeder
             {
                 Console.WriteLine(hS.CreateHarbour(imaginaryHarbors[i], cities[i], countries[i]));
             }
+        }
+        public static void CreatеPassengers()
+        {
+            Console.WriteLine(pS.AddPassenger("Jane", "Smith", "0000000001", 24, false,false));
+            Console.WriteLine(pS.AddPassenger("John", "Doe", "1111111111", 13, true, false));
+            Console.WriteLine(pS.AddPassenger("Alice", "Johnson", "2222222222", 21, true, false));
+            Console.WriteLine(pS.AddPassenger("Michael", "Williams", "3333333333", 45, false, false));
+            Console.WriteLine(pS.AddPassenger("Emily", "Brown", "4444444444", 22, true, false));
+            Console.WriteLine(pS.AddPassenger("Daniel", "Miller", "5555555555", 62, false, true));
+            Console.WriteLine(pS.AddPassenger("Olivia", "Davis", "6666666666", 19, true, false));
+            Console.WriteLine(pS.AddPassenger("William", "Martinez", "7777777777", 64, false, true));
+            Console.WriteLine(pS.AddPassenger("Sophia", "Garcia", "8888888888", 21, true, false));
+            Console.WriteLine(pS.AddPassenger("James", "Jones", "9999999999", 72, false, true));
+            Console.WriteLine(pS.AddPassenger("Ava", "Rodriguez", "1234567890", 20, true, false));
+            Console.WriteLine(pS.AddPassenger("Robert", "Lopez", "2345678901", 58, false, true));
+            Console.WriteLine(pS.AddPassenger("Mia", "Hernandez", "3456789012", 25, true, false));
+            Console.WriteLine(pS.AddPassenger("David", "Smith", "4567890123", 40, false, false));
+            Console.WriteLine(pS.AddPassenger("Isabella", "Johnson", "5678901234", 16, true, false));
+            Console.WriteLine(pS.AddPassenger("Joseph", "Williams", "6789012345", 68, false, true));
+
         }
     }
 }
