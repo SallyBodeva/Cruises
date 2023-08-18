@@ -79,6 +79,15 @@
                 return cities;
             }
         }
+
+        public List<string> GetShipNames()
+        {
+            using (context = new AppDbContext())
+            {
+                List<string> ships = context.Ships.Select(x => x.Name).ToList();
+                return ships;
+            }
+        }
         public List<string> GetCountriesNames()
         {
             using (context = new AppDbContext())
@@ -144,34 +153,34 @@
                 return names;
             }
         }
-        public List<int> GetFromHarbours()
+        public List<string> GetFromHarbours()
         {
             using (context= new AppDbContext())
             {
-                List<int> fromHarboursIds = this.context.Harbours.OrderBy(x=>x.Id).Select(x => x.Id).ToList();
+                List<string> fromHarboursIds = this.context.Harbours.OrderBy(x=>x.Id).Select(x => x.Name).ToList();
                 return fromHarboursIds;
             }
         }
-        public List<int> GetToHarbours(int fromHarbourtId)
+        public List<string> GetToHarbours(int fromHarbourtId)
         {
             using (context = new AppDbContext())
             {
-                List<int> toHarboursIds = this.context.Harbours.Where(x=>x.Id!=fromHarbourtId).OrderBy(x => x.Id).Select(x => x.Id).ToList();
+                List<string> toHarboursIds = this.context.Harbours.Where(x=>x.Id!=fromHarbourtId).OrderBy(x => x.Id).Select(x => x.Name).ToList();
                 return toHarboursIds;
             }
         }
-        public string CreateVoyage(int fromHarbourId, int toHarbourId, int duration, int shipId, decimal ticketPrice)
+        public string CreateVoyage(string fromHarbourName, string toHarbourName, int duration, string shipName, decimal ticketPrice)
         {
             StringBuilder message = new StringBuilder();
             bool isValid = true;
-            if (fromHarbourId<0)
+            if (string.IsNullOrWhiteSpace(fromHarbourName))
             {
-                message.AppendLine("Inavlid id  of starting Harbour");
+                message.AppendLine("Inavlid name  of starting Harbour");
                 isValid = false;
             }
-            if (toHarbourId < 0)
+            if (string.IsNullOrWhiteSpace(toHarbourName))
             {
-                message.AppendLine("Inavlid id  of destination Harbour");
+                message.AppendLine("Inavlid name of destination Harbour");
                 isValid = false;
             }
             if (duration <= 0)
@@ -179,9 +188,9 @@
                 message.AppendLine("Inavlid duration of voyage");
                 isValid = false;
             }
-            if (shipId<0)
+            if (string.IsNullOrWhiteSpace(shipName))
             {
-                message.AppendLine("Inavlid id of ship");
+                message.AppendLine("Inavlid name of ship");
                 isValid = false;
             }
             if (ticketPrice <= 0)
@@ -194,20 +203,39 @@
                
                 if (isValid)
                 {
-                    Voyage v = new Voyage()
+                    Harbour s = this.context.Harbours.FirstOrDefault(x => x.Name == fromHarbourName);
+                    Harbour d = this.context.Harbours.FirstOrDefault(x => x.Name == toHarbourName);
+                    Ship sh = this.context.Ships.FirstOrDefault(x => x.Name == shipName);
+                    if (s.Name == d.Name)
                     {
-                        HarbourId=fromHarbourId,
-                        DestinationHarbourId= toHarbourId,
+                        message.AppendLine($"Cannot assign a travel from one Harbour to the same Harbour");
+                    }
+                    else
+                    {
+                        Voyage v = new Voyage()
+                    {
+                        Harbour=s,
+                        DestinationHarbour= d,
                         Duration=duration,
-                        ShipId=shipId,
+                        Ship=sh,
                         TicketPrice= ticketPrice
                     };
-                    context.Voyages.Add(v);
-                    context.SaveChanges();
-                    message.AppendLine($"Our EnchantedEscala-Cruises has a new voyage- from {v.Harbour.Name} to {v.DestinationHarbour.Name}");
+                        context.Voyages.Add(v);
+                        context.SaveChanges();
+                        message.AppendLine($"Our EnchantedEscala-Cruises has a new voyage- from {v.Harbour.Name} to {v.DestinationHarbour.Name}");
+                    }
                 }
             }
             return message.ToString().TrimEnd();
+        }
+        public string GetHarbourNameByIndex(int index)
+        {
+            using (context= new AppDbContext())
+            {
+                List<Harbour> harbours = context.Harbours.ToList();
+                Harbour h = harbours[index];
+                return h.Name;
+            }
         }
     }
 }
