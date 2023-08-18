@@ -17,7 +17,8 @@ namespace Cruises.DataSeeder
             //CreatеShipTypes();
             //CreatеVoyages();
             //CreatеPassengers();
-            CreatеCrewMembers();
+            //CreatеCrewMembers();
+            //CreatеShip();
         }
         public static void CreateCities()
         {
@@ -108,5 +109,30 @@ namespace Cruises.DataSeeder
             Console.WriteLine(cS.AddCrewMember("Daniel", "Lopez", 30, 7.4, "Pumpman"));
             Console.WriteLine(cS.AddCrewMember("Amelia", "Hernandez", 36, 8.9, "Able Seaman"));
         }
+        public static void CreatеShip()
+        {
+
+            List<string> imaginaryShipName = new List<string>()
+                    { "Ocean Voyager","Stellar Mariner","Sunset Serenade","Majestic Horizon",
+                      "Azure Dreamer","Silver Crest","Golden Odyssey","Emerald Seahawk","Crystal Mirage",
+                      "Harbor Majesty","Sapphire Starlight","Whispering Wind","Crimson Tide",
+                      "Radiant Pearl","Aurora Borealis","Mystic Galleon","Enchanted Voyager",
+                      "Celestial Odyssey","Eternal Skylark","Coral Destiny"
+                    };
+            List<string> shipTypes = aS.GetShipTypeName();
+            Random random = new Random();
+            List<string> models = new List<string>() { "B.001", "B.002", "B.003", "B.004", "B.005", "B.010" };
+
+            for (int i = 0; i < imaginaryShipName.Count; i++)
+            {
+                int model = random.Next(0, models.Count);
+                int capacity = random.Next(50, 200);
+                int shitType = random.Next(0, 8);
+                int isFulll = random.Next(0, 1);
+                bool boolValue = (isFulll != 0);
+                Console.WriteLine(aS.CreateShip(imaginaryShipName[i], models[model], capacity, shipTypes[shitType],boolValue));
+            }
+        }
+
     }
 }

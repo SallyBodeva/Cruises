@@ -22,7 +22,7 @@
             }
             if (string.IsNullOrWhiteSpace(city))
             {
-                message.AppendLine("Inavlid id of the city");
+                message.AppendLine("Inavlid name of the city");
                 isValid = false;
             }
             City c = null;
