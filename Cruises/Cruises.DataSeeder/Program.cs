@@ -10,12 +10,14 @@ namespace Cruises.DataSeeder
         private static AdditionalService aS = new AdditionalService();
         private static HarbourService hS = new HarbourService();
         private static PassengerService pS = new PassengerService();
+        private static CrewService cS = new CrewService();
         static void Main()
         {
             //CreateCities();
             //CreatеShipTypes();
             //CreatеVoyages();
-            CreatеPassengers();
+            //CreatеPassengers();
+            CreatеCrewMembers();
         }
         public static void CreateCities()
         {
@@ -87,6 +89,24 @@ namespace Cruises.DataSeeder
             Console.WriteLine(pS.AddPassenger("Isabella", "Johnson", "5678901234", 16, true, false));
             Console.WriteLine(pS.AddPassenger("Joseph", "Williams", "6789012345", 68, false, true));
 
+        }
+        public static void CreatеCrewMembers()
+        {
+            Console.WriteLine(cS.AddCrewMember("Milan", "Smith", 26, 7.2, "Boatswain"));
+            Console.WriteLine(cS.AddCrewMember("Emma", "Johnson", 32, 8.5, "Chief Officer"));
+            Console.WriteLine(cS.AddCrewMember("Liam", "Williams", 40, 9.0, "Captain"));
+            Console.WriteLine(cS.AddCrewMember("Olivia", "Brown", 28, 6.8, "Third Officer"));
+            Console.WriteLine(cS.AddCrewMember("Noah", "Jones", 23, 7.7, "Ordinary Seaman"));
+            Console.WriteLine(cS.AddCrewMember("Ava", "Davis", 35, 8.2, "Chief Engineer"));
+            Console.WriteLine(cS.AddCrewMember("Isabella", "Miller", 29, 6.5, "Second Engineer"));
+            Console.WriteLine(cS.AddCrewMember("Sophia", "Wilson", 45, 9.8, "Chief Steward"));
+            Console.WriteLine(cS.AddCrewMember("Ethan", "Moore", 31, 7.9, "Cook"));
+            Console.WriteLine(cS.AddCrewMember("Mia", "Taylor", 27, 7.0, "Medical Officer"));
+            Console.WriteLine(cS.AddCrewMember("James", "Anderson", 22, 6.2, "Radio Operator"));
+            Console.WriteLine(cS.AddCrewMember("Alexander", "Martinez", 33, 8.7, "Second Officer"));
+            Console.WriteLine(cS.AddCrewMember("Charlotte", "Garcia", 39, 8.0, "Electrician"));
+            Console.WriteLine(cS.AddCrewMember("Daniel", "Lopez", 30, 7.4, "Pumpman"));
+            Console.WriteLine(cS.AddCrewMember("Amelia", "Hernandez", 36, 8.9, "Able Seaman"));
         }
     }
 }
