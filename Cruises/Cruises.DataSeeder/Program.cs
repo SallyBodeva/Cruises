@@ -73,7 +73,7 @@ namespace Cruises.DataSeeder
         }
         public static void CreatеPassengers()
         {
-            Console.WriteLine(pS.AddPassenger("Jane", "Smith", "0000000001", 24, false,false));
+            Console.WriteLine(pS.AddPassenger("Jane", "Smith", "0000000001", 24, false, false));
             Console.WriteLine(pS.AddPassenger("John", "Doe", "1111111111", 13, true, false));
             Console.WriteLine(pS.AddPassenger("Alice", "Johnson", "2222222222", 21, true, false));
             Console.WriteLine(pS.AddPassenger("Michael", "Williams", "3333333333", 45, false, false));
@@ -130,9 +130,9 @@ namespace Cruises.DataSeeder
                 int shitType = random.Next(0, 8);
                 int isFulll = random.Next(0, 1);
                 bool boolValue = (isFulll != 0);
-                Console.WriteLine(aS.CreateShip(imaginaryShipName[i], models[model], capacity, shipTypes[shitType],boolValue));
+                Console.WriteLine(aS.CreateShip(imaginaryShipName[i], models[model], capacity, shipTypes[shitType], boolValue));
             }
         }
-
+       
     }
 }

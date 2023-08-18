@@ -144,5 +144,70 @@
                 return names;
             }
         }
+        public List<int> GetFromHarbours()
+        {
+            using (context= new AppDbContext())
+            {
+                List<int> fromHarboursIds = this.context.Harbours.OrderBy(x=>x.Id).Select(x => x.Id).ToList();
+                return fromHarboursIds;
+            }
+        }
+        public List<int> GetToHarbours(int fromHarbourtId)
+        {
+            using (context = new AppDbContext())
+            {
+                List<int> toHarboursIds = this.context.Harbours.Where(x=>x.Id!=fromHarbourtId).OrderBy(x => x.Id).Select(x => x.Id).ToList();
+                return toHarboursIds;
+            }
+        }
+        public string CreateVoyage(int fromHarbourId, int toHarbourId, int duration, int shipId, decimal ticketPrice)
+        {
+            StringBuilder message = new StringBuilder();
+            bool isValid = true;
+            if (fromHarbourId<0)
+            {
+                message.AppendLine("Inavlid id  of starting Harbour");
+                isValid = false;
+            }
+            if (toHarbourId < 0)
+            {
+                message.AppendLine("Inavlid id  of destination Harbour");
+                isValid = false;
+            }
+            if (duration <= 0)
+            {
+                message.AppendLine("Inavlid duration of voyage");
+                isValid = false;
+            }
+            if (shipId<0)
+            {
+                message.AppendLine("Inavlid id of ship");
+                isValid = false;
+            }
+            if (ticketPrice <= 0)
+            {
+                message.AppendLine("Inavlid tikect price of voyage");
+                isValid = false;
+            }
+            using (context = new AppDbContext())
+            {
+               
+                if (isValid)
+                {
+                    Voyage v = new Voyage()
+                    {
+                        HarbourId=fromHarbourId,
+                        DestinationHarbourId= toHarbourId,
+                        Duration=duration,
+                        ShipId=shipId,
+                        TicketPrice= ticketPrice
+                    };
+                    context.Voyages.Add(v);
+                    context.SaveChanges();
+                    message.AppendLine($"Our EnchantedEscala-Cruises has a new voyage- from {v.Harbour.Name} to {v.DestinationHarbour.Name}");
+                }
+            }
+            return message.ToString().TrimEnd();
+        }
     }
 }
