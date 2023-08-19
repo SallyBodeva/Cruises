@@ -4,6 +4,7 @@
     using Cruises.Models;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
     public class CrewService
     {
@@ -56,6 +57,26 @@
                 return msg.ToString().TrimEnd();
             }
         }
+        public List<string> GetCrewMemberBasicInfo(int page = 1, int count = 10)
+        {
+            List<string> list = null;
+            using (context = new AppDbContext())
+            {
+                list = context.CrewMembers
+                    .Skip((page - 1) * count)
+                    .Take(count).Select(x => $"{x.Id} - {x.FirstName} {x.LastName}")
+                    .ToList();
+            }
+            return list;
+        }
+        public int GetCrewPagesCount(int count = 10)
+        {
+            using (context = new AppDbContext())
+            {
+                return (int)Math.Ceiling(context.CrewMembers.Count() / (double)count);
+            }
+        }
+
         public string AddShipCrew(int shipId, List<int> crewMemberIds)
         {
             StringBuilder message = new StringBuilder();
