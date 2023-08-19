@@ -57,6 +57,38 @@
                 return msg.ToString().TrimEnd();
             }
         }
+        public string DeleteCrewMemberById(int id)
+        {
+            using (context = new AppDbContext())
+            {
+                CrewMember cm = context.CrewMembers.Find(id);
+                if (cm == null)
+                {
+                    return $"{nameof(CrewMember)} not found!";
+                }
+                context.CrewMembers.Remove(cm);
+                context.SaveChanges();
+                return $"{nameof(CrewMember)} {cm.FirstName} {cm.LastName} was fired!";
+            }
+        }
+        public string UpdateCrewMemberRatingById(int id, double newRating)
+        {
+            using (context = new AppDbContext())
+            {
+                CrewMember cm = this.context.CrewMembers.FirstOrDefault(x => x.Id == id);
+                if (cm != null)
+                {
+                    cm.Rating = newRating;
+                    context.Update(cm);
+                    context.SaveChanges();
+                    return $"{nameof(CrewMember)} {cm.FirstName} {cm.LastName} has new rating!";
+                }
+                else
+                {
+                    return "This voyage does not exist...";
+                }
+            }
+        }
         public List<string> GetCrewMemberBasicInfo(int page = 1, int count = 10)
         {
             List<string> list = null;
@@ -74,6 +106,14 @@
             using (context = new AppDbContext())
             {
                 return (int)Math.Ceiling(context.CrewMembers.Count() / (double)count);
+            }
+        }
+        public CrewMember GetCrewMemberById(int id)
+        {
+            using (context= new AppDbContext())
+            {
+                CrewMember cm= context.CrewMembers.FirstOrDefault(x => x.Id == id);
+                return cm;
             }
         }
 
