@@ -168,6 +168,31 @@
             }
             return message.ToString().TrimEnd();
         }
+        public int GetVoyageDurationById(int voyageId)
+        {
+            using (context = new AppDbContext())
+            {
+                Voyage v = context.Voyages.Find(voyageId);
+                return v.Duration;
+            }
+        }
+        public string GetVoyageShupNameById(int voyageId)
+        {
+            using (context = new AppDbContext())
+            {
+                Voyage v = context.Voyages.Find(voyageId);
+                return v.Ship.Name;
+            }
+        }
+        public decimal GetVoyageTicketPriceById(int voyageId)
+        {
+            using (context = new AppDbContext())
+            {
+                Voyage v = context.Voyages.Find(voyageId);
+                return v.TicketPrice;
+            }
+        }
+        // Paste it on the next line...
 
     }
 }
