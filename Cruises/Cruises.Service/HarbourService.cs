@@ -109,6 +109,15 @@
             return msg.ToString().TrimEnd();
         }
 
+        public string GetHarbourNameByIndex(int index)
+        {
+            using (context = new AppDbContext())
+            {
+                List<Harbour> harbours = context.Harbours.ToList();
+                Harbour h = harbours[index];
+                return h.Name;
+            }
+        }
     }
 
 }

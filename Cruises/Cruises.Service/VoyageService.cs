@@ -10,54 +10,64 @@
     {
         private AppDbContext context;
 
-        public string CreateNewVoyage(int startHarbourId, int destinationHarbourId, int duration, int shipId,decimal ticketPrice)
+        public string CreateVoyage(string fromHarbourName, string toHarbourName, int duration, string shipName, decimal ticketPrice)
         {
-
             StringBuilder message = new StringBuilder();
             bool isValid = true;
-            if (startHarbourId<1)
+            if (string.IsNullOrWhiteSpace(fromHarbourName))
             {
-                message.AppendLine($"Invalid id of the start harbour!");
+                message.AppendLine("Inavlid name  of starting Harbour");
                 isValid = false;
             }
-            if (destinationHarbourId<1)
+            if (string.IsNullOrWhiteSpace(toHarbourName))
             {
-                message.AppendLine($"Invalid id of destination !");
+                message.AppendLine("Inavlid name of destination Harbour");
                 isValid = false;
             }
-            if (duration<1)
+            if (duration <= 0)
             {
-                message.AppendLine($"Invalid duration time!");
+                message.AppendLine("Inavlid duration of voyage");
                 isValid = false;
             }
-            if (shipId < 1)
+            if (string.IsNullOrWhiteSpace(shipName))
             {
-                message.AppendLine($"Invalid ship id!");
+                message.AppendLine("Inavlid name of ship");
                 isValid = false;
             }
             if (ticketPrice <= 0)
             {
-                message.AppendLine($"Invalid ticket price!");
+                message.AppendLine("Inavlid tikect price of voyage");
                 isValid = false;
             }
             using (context = new AppDbContext())
             {
+
                 if (isValid)
                 {
-                    Voyage v = new Voyage
+                    Harbour s = this.context.Harbours.FirstOrDefault(x => x.Name == fromHarbourName);
+                    Harbour d = this.context.Harbours.FirstOrDefault(x => x.Name == toHarbourName);
+                    Ship sh = this.context.Ships.FirstOrDefault(x => x.Name == shipName);
+                    if (s.Name == d.Name)
                     {
-                        HarbourId = startHarbourId,
-                        DestinationHarbourId = destinationHarbourId,
-                        Duration = duration,
-                        ShipId= shipId,
-                        TicketPrice= ticketPrice
-                    };
-                    this.context.Voyages.Add(v);
-                    this.context.SaveChanges();
-                    message.AppendLine($"New voyage from {v.Harbour.Name} to {v.DestinationHarbour.Name} is created");
+                        message.AppendLine($"Cannot assign a travel from one Harbour to the same Harbour");
+                    }
+                    else
+                    {
+                        Voyage v = new Voyage()
+                        {
+                            Harbour = s,
+                            DestinationHarbour = d,
+                            Duration = duration,
+                            Ship = sh,
+                            TicketPrice = ticketPrice
+                        };
+                        context.Voyages.Add(v);
+                        context.SaveChanges();
+                        message.AppendLine($"Our EnchantedEscala-Cruises has a new voyage- from {v.Harbour.Name} to {v.DestinationHarbour.Name}");
+                    }
                 }
-                return message.ToString().TrimEnd();
             }
+            return message.ToString().TrimEnd();
         }
         public string DeleteVoyageById(int id)
         {
@@ -156,5 +166,6 @@
             }
             return message.ToString().TrimEnd();
         }
+
     }
 }

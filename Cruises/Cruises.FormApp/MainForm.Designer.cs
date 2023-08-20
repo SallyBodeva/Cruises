@@ -30,6 +30,7 @@
         {
             this.WelcomeLabel = new System.Windows.Forms.Label();
             this.CrewFormaAppButon = new System.Windows.Forms.Button();
+            this.buttonVoyagesCatalog = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // WelcomeLabel
@@ -52,11 +53,22 @@
             this.CrewFormaAppButon.UseVisualStyleBackColor = true;
             this.CrewFormaAppButon.Click += new System.EventHandler(this.CrewFormaAppButon_Click);
             // 
+            // buttonVoyagesCatalog
+            // 
+            this.buttonVoyagesCatalog.Location = new System.Drawing.Point(225, 112);
+            this.buttonVoyagesCatalog.Name = "buttonVoyagesCatalog";
+            this.buttonVoyagesCatalog.Size = new System.Drawing.Size(120, 74);
+            this.buttonVoyagesCatalog.TabIndex = 2;
+            this.buttonVoyagesCatalog.Text = "Voyages- Catalog";
+            this.buttonVoyagesCatalog.UseVisualStyleBackColor = true;
+            this.buttonVoyagesCatalog.Click += new System.EventHandler(this.buttonVoyagesCatalog_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonVoyagesCatalog);
             this.Controls.Add(this.CrewFormaAppButon);
             this.Controls.Add(this.WelcomeLabel);
             this.Name = "MainForm";
@@ -70,5 +82,6 @@
 
         private System.Windows.Forms.Label WelcomeLabel;
         private System.Windows.Forms.Button CrewFormaAppButon;
+        private System.Windows.Forms.Button buttonVoyagesCatalog;
     }
 }

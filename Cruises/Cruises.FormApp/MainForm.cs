@@ -22,5 +22,11 @@ namespace Cruises.FormApp
             CrewFormApp crewFormApp = new CrewFormApp();
             crewFormApp.ShowDialog();
         }
+
+        private void buttonVoyagesCatalog_Click(object sender, EventArgs e)
+        {
+            VoyagesCatalogFormApp vCFA = new VoyagesCatalogFormApp();
+            vCFA.ShowDialog();
+        }
     }
 }

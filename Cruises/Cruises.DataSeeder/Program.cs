@@ -8,9 +8,11 @@ namespace Cruises.DataSeeder
     public class Program
     {
         private static AdditionalService aS = new AdditionalService();
+        private static VoyageService vS = new VoyageService();
         private static HarbourService hS = new HarbourService();
         private static PassengerService pS = new PassengerService();
         private static CrewService cS = new CrewService();
+        private static ShipService sS = new ShipService();
         static void Main()
         {
             //CreateCities();
@@ -19,20 +21,20 @@ namespace Cruises.DataSeeder
             //CreatеPassengers();
             //CreatеCrewMembers();
             //CreatеShip();
-           // CreatеVoyages();
+            //CreatеVoyages();
+            //CreateImages();
+
         }
         public static void CreateCities()
         {
             List<string> cities = new List<string>()
         {
-            "Sydney","Hong Kong","New York City","Mumbai","Rotterdam","Tokyo","San Francisco","Barcelona","Cape Town","Vancouver",
-            "Dubai","Rio de Janeiro","Singapore City","Istanbul","Marseille","Copenhagen","Buenos Aires","Hamburg","Alexandria","Oslo"
+            "Barcelona","Marseille","Athens","Istanbul","Alexandria","Naples","Valencia", "Split","Malaga","Genoa"
         };
 
             List<string> countries = new List<string>()
         {
-            "Australia","China","USA","India","Netherlands","Japan","USA","Spain","South Africa","Canada","United Arab Emirates","Brazil","Singapore","Turkey",
-            "France","Denmark","Argentina","Germany","Egypt","Norway"
+            "Spain","France","Greece","Turkey","Egypt","Italy","Spain","Croatia","Spain","Italy"
         };
 
             for (int i = 0; i < cities.Count; i++)
@@ -44,7 +46,7 @@ namespace Cruises.DataSeeder
         {
             List<string> cruiseShipTypes = new List<string>()
         {
-            "Cruise Ship","Yacht","Sailing Ship", "Passenger Ferry","Catamaran", "Tall Ship","Ocean Liner","Barge"
+            "Basic Ship", "Passenger Ferry","Catamaran","Tall ship","Yacht"
         };
 
             for (int i = 0; i < cruiseShipTypes.Count; i++)
@@ -59,10 +61,7 @@ namespace Cruises.DataSeeder
                     {
                         "Starlight Bay Harbour", "Crystal Cove Port","Azure Haven Harbour",
                         "Whispering Winds Marina","Enchanted Lagoon Port","Serenity Shores Harbour",
-                        "Moonlit Mist Wharf","Twilight Harbour Bay", "Dreamweaver Quay","Radiant Reef Port",
-                        "Celestial Crescent Harbour","Mystique Isle Marina","Elysian Echo Cove",
-                        "Harmony Harbour Port","Nebula Mirage Wharf","Ethereal Echoes Bay",
-                        "Siren's Song Cove","Astral Haven Harbour","Mirage Moonrise Port"
+                        "Moonlit Mist Wharf","Twilight Harbour Bay", "Dreamweaver Quay","Radiant Reef Port"
                     };
             List<string> cities = aS.GetCitiesNames();
             List<string> countries = aS.GetCountriesNames();
@@ -115,12 +114,9 @@ namespace Cruises.DataSeeder
 
             List<string> imaginaryShipName = new List<string>()
                     { "Ocean Voyager","Stellar Mariner","Sunset Serenade","Majestic Horizon",
-                      "Azure Dreamer","Silver Crest","Golden Odyssey","Emerald Seahawk","Crystal Mirage",
-                      "Harbor Majesty","Sapphire Starlight","Whispering Wind","Crimson Tide",
-                      "Radiant Pearl","Aurora Borealis","Mystic Galleon","Enchanted Voyager",
-                      "Celestial Odyssey","Eternal Skylark","Coral Destiny"
+                      "Azure Dreamer"
                     };
-            List<string> shipTypes = aS.GetShipTypeName();
+            List<string> shipTypes = sS.GetShipTypeName();
             Random random = new Random();
             List<string> models = new List<string>() { "B.001", "B.002", "B.003", "B.004", "B.005", "B.010" };
 
@@ -128,10 +124,9 @@ namespace Cruises.DataSeeder
             {
                 int model = random.Next(0, models.Count);
                 int capacity = random.Next(50, 200);
-                int shitType = random.Next(0, 8);
                 int isFulll = random.Next(0, 1);
                 bool boolValue = (isFulll != 0);
-                Console.WriteLine(aS.CreateShip(imaginaryShipName[i], models[model], capacity, shipTypes[shitType], boolValue));
+                Console.WriteLine(sS.CreateShip(imaginaryShipName[i], models[model], capacity, shipTypes[i], boolValue));
             }
         }
         public static void CreatеVoyages()
@@ -141,13 +136,13 @@ namespace Cruises.DataSeeder
                 Random random = new Random();
                 List<string> fromHarbours = aS.GetFromHarbours();
                 int fH = random.Next(0, fromHarbours.Count);
-                string fHName = aS.GetHarbourNameByIndex(fH);
+                string fHName = hS.GetHarbourNameByIndex(fH);
 
                 int tH = random.Next(0, fromHarbours.Count - 1);
                 List<string> toHarbours = aS.GetToHarbours(tH);
-                string tHName = aS.GetHarbourNameByIndex(tH);
+                string tHName = hS.GetHarbourNameByIndex(tH);
 
-                List<string> shipsName = aS.GetShipNames();
+                List<string> shipsName = sS.GetShipNames();
                 int ship = random.Next(0, shipsName.Count);
 
                 List<int> durations = new List<int>() { 1, 2, 3, 4 };
@@ -155,14 +150,29 @@ namespace Cruises.DataSeeder
 
                 List<decimal> price = new List<decimal>() { 25.00m, 18.99m, 99.99m, 10.00m, 29.99m };
                 int pInxed = random.Next(0, price.Count);
-                if (fHName!=tHName)
+                if (fHName != tHName)
                 {
-                    Console.WriteLine(aS.CreateVoyage(fHName, tHName, durations[dInxed], shipsName[ship], price[pInxed]));
+                    Console.WriteLine(vS.CreateVoyage(fHName, tHName, durations[dInxed], shipsName[ship], price[pInxed]));
                 }
                 else
                 {
                     Console.WriteLine("Cannot assign a travel from one Harbour to the same Harbour");
                 }
+            }
+        }
+        public static void CreateImages()
+        {
+            List<string> urls = new List<string>() {
+           "https://www.kongsberg.com/contentassets/e6051e3c95bb463fbbf7a1dda2c95571/nvc-376-wp-gold-kongsberg-10-cam1_10-color-1.jpg",
+           "https://www.bairdmaritime.com/wp-content/uploads/IC19082-8-0-031.jpg",
+           "https://www.simpsonmarine.com/wp-content/uploads/2022/10/navigation-helico-ncz9473-a3-1-scaled.jpg",
+           "https://southernboating.com/wp-content/uploads/2018/01/Ted-Neighbors-1_RT.jpg",
+           "https://cdn.boatinternational.com/convert/files/2022/07/76393b30-0096-11ed-aed3-f71d7c568098-AHPO-hero-Photography-guillaume-plisson.jpg/r%5Bwidth%5D=1920/76393b30-0096-11ed-aed3-f71d7c568098-AHPO-hero-Photography-guillaume-plisson.jpg"
+            };
+            List<int> shipsId = sS.GetShipsId();
+            for (int i = 0; i < urls.Count; i++)
+            {
+                Console.WriteLine(sS.AddImageToShip(shipsId[i], urls[i]));
             }
         }
     }
