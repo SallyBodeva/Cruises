@@ -15,5 +15,9 @@ namespace Cruises.FormApp
             InitializeComponent();
         }
 
+        private void VoyagesCatalogFormApp_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
