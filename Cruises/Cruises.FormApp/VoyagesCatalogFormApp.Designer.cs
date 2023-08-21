@@ -48,6 +48,12 @@
             this.buttonPrevious = new System.Windows.Forms.Button();
             this.buttonNetx = new System.Windows.Forms.Button();
             this.label3Hours = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxToCountry = new System.Windows.Forms.TextBox();
+            this.textBoxFromCountry = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,7 +97,7 @@
             // 
             this.textBoxFromHName.Location = new System.Drawing.Point(122, 240);
             this.textBoxFromHName.Name = "textBoxFromHName";
-            this.textBoxFromHName.Size = new System.Drawing.Size(100, 23);
+            this.textBoxFromHName.Size = new System.Drawing.Size(254, 23);
             this.textBoxFromHName.TabIndex = 5;
             // 
             // labelToHName
@@ -107,13 +113,13 @@
             // 
             this.textBoxToHNmae.Location = new System.Drawing.Point(122, 282);
             this.textBoxToHNmae.Name = "textBoxToHNmae";
-            this.textBoxToHNmae.Size = new System.Drawing.Size(100, 23);
+            this.textBoxToHNmae.Size = new System.Drawing.Size(254, 23);
             this.textBoxToHNmae.TabIndex = 7;
             // 
             // labelFromCity
             // 
             this.labelFromCity.AutoSize = true;
-            this.labelFromCity.Location = new System.Drawing.Point(251, 243);
+            this.labelFromCity.Location = new System.Drawing.Point(382, 243);
             this.labelFromCity.Name = "labelFromCity";
             this.labelFromCity.Size = new System.Drawing.Size(31, 15);
             this.labelFromCity.TabIndex = 8;
@@ -122,7 +128,7 @@
             // labelToCity
             // 
             this.labelToCity.AutoSize = true;
-            this.labelToCity.Location = new System.Drawing.Point(251, 282);
+            this.labelToCity.Location = new System.Drawing.Point(382, 282);
             this.labelToCity.Name = "labelToCity";
             this.labelToCity.Size = new System.Drawing.Size(31, 15);
             this.labelToCity.TabIndex = 9;
@@ -130,14 +136,14 @@
             // 
             // textBoxFromCity
             // 
-            this.textBoxFromCity.Location = new System.Drawing.Point(297, 240);
+            this.textBoxFromCity.Location = new System.Drawing.Point(428, 240);
             this.textBoxFromCity.Name = "textBoxFromCity";
             this.textBoxFromCity.Size = new System.Drawing.Size(100, 23);
             this.textBoxFromCity.TabIndex = 10;
             // 
             // textBoxToCity
             // 
-            this.textBoxToCity.Location = new System.Drawing.Point(297, 282);
+            this.textBoxToCity.Location = new System.Drawing.Point(428, 282);
             this.textBoxToCity.Name = "textBoxToCity";
             this.textBoxToCity.Size = new System.Drawing.Size(100, 23);
             this.textBoxToCity.TabIndex = 11;
@@ -145,7 +151,7 @@
             // labelDuration
             // 
             this.labelDuration.AutoSize = true;
-            this.labelDuration.Location = new System.Drawing.Point(33, 330);
+            this.labelDuration.Location = new System.Drawing.Point(33, 365);
             this.labelDuration.Name = "labelDuration";
             this.labelDuration.Size = new System.Drawing.Size(56, 15);
             this.labelDuration.TabIndex = 12;
@@ -153,7 +159,7 @@
             // 
             // textBoxDuration
             // 
-            this.textBoxDuration.Location = new System.Drawing.Point(122, 327);
+            this.textBoxDuration.Location = new System.Drawing.Point(122, 362);
             this.textBoxDuration.Name = "textBoxDuration";
             this.textBoxDuration.Size = new System.Drawing.Size(100, 23);
             this.textBoxDuration.TabIndex = 13;
@@ -161,7 +167,7 @@
             // labelShipName
             // 
             this.labelShipName.AutoSize = true;
-            this.labelShipName.Location = new System.Drawing.Point(33, 368);
+            this.labelShipName.Location = new System.Drawing.Point(33, 323);
             this.labelShipName.Name = "labelShipName";
             this.labelShipName.Size = new System.Drawing.Size(66, 15);
             this.labelShipName.TabIndex = 14;
@@ -169,15 +175,15 @@
             // 
             // textBoxShipName
             // 
-            this.textBoxShipName.Location = new System.Drawing.Point(122, 365);
+            this.textBoxShipName.Location = new System.Drawing.Point(122, 320);
             this.textBoxShipName.Name = "textBoxShipName";
-            this.textBoxShipName.Size = new System.Drawing.Size(100, 23);
+            this.textBoxShipName.Size = new System.Drawing.Size(254, 23);
             this.textBoxShipName.TabIndex = 15;
             // 
             // LabelTPrice
             // 
             this.LabelTPrice.AutoSize = true;
-            this.LabelTPrice.Location = new System.Drawing.Point(600, 373);
+            this.LabelTPrice.Location = new System.Drawing.Point(577, 362);
             this.LabelTPrice.Name = "LabelTPrice";
             this.LabelTPrice.Size = new System.Drawing.Size(70, 15);
             this.LabelTPrice.TabIndex = 16;
@@ -185,7 +191,7 @@
             // 
             // textBoxTicketPrice
             // 
-            this.textBoxTicketPrice.Location = new System.Drawing.Point(676, 368);
+            this.textBoxTicketPrice.Location = new System.Drawing.Point(653, 359);
             this.textBoxTicketPrice.Name = "textBoxTicketPrice";
             this.textBoxTicketPrice.Size = new System.Drawing.Size(100, 23);
             this.textBoxTicketPrice.TabIndex = 17;
@@ -198,6 +204,7 @@
             this.buttonPrevious.TabIndex = 18;
             this.buttonPrevious.Text = "<<";
             this.buttonPrevious.UseVisualStyleBackColor = true;
+            this.buttonPrevious.Click += new System.EventHandler(this.buttonPrevious_Click);
             // 
             // buttonNetx
             // 
@@ -207,21 +214,78 @@
             this.buttonNetx.TabIndex = 19;
             this.buttonNetx.Text = ">>";
             this.buttonNetx.UseVisualStyleBackColor = true;
+            this.buttonNetx.Click += new System.EventHandler(this.buttonNetx_Click);
             // 
             // label3Hours
             // 
             this.label3Hours.AutoSize = true;
-            this.label3Hours.Location = new System.Drawing.Point(228, 330);
+            this.label3Hours.Location = new System.Drawing.Point(228, 365);
             this.label3Hours.Name = "label3Hours";
             this.label3Hours.Size = new System.Drawing.Size(45, 15);
             this.label3Hours.TabIndex = 20;
             this.label3Hours.Text = "(hours)";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(656, 387);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(97, 15);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "(Euros for adults)";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(601, 402);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(193, 15);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "(For students and retiree is 50% off)";
+            // 
+            // textBoxToCountry
+            // 
+            this.textBoxToCountry.Location = new System.Drawing.Point(614, 279);
+            this.textBoxToCountry.Name = "textBoxToCountry";
+            this.textBoxToCountry.Size = new System.Drawing.Size(100, 23);
+            this.textBoxToCountry.TabIndex = 26;
+            // 
+            // textBoxFromCountry
+            // 
+            this.textBoxFromCountry.Location = new System.Drawing.Point(614, 240);
+            this.textBoxFromCountry.Name = "textBoxFromCountry";
+            this.textBoxFromCountry.Size = new System.Drawing.Size(100, 23);
+            this.textBoxFromCountry.TabIndex = 25;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(555, 282);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 15);
+            this.label5.TabIndex = 24;
+            this.label5.Text = "Country:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(555, 243);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 15);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "Country:";
+            // 
             // VoyagesCatalogFormApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(817, 450);
+            this.Controls.Add(this.textBoxToCountry);
+            this.Controls.Add(this.textBoxFromCountry);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label3Hours);
             this.Controls.Add(this.buttonNetx);
             this.Controls.Add(this.buttonPrevious);
@@ -273,5 +337,11 @@
         private System.Windows.Forms.Button buttonPrevious;
         private System.Windows.Forms.Button buttonNetx;
         private System.Windows.Forms.Label label3Hours;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBoxToCountry;
+        private System.Windows.Forms.TextBox textBoxFromCountry;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

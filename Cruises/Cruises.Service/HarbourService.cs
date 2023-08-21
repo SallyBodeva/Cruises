@@ -118,6 +118,42 @@
                 return h.Name;
             }
         }
+        public string GetHarbourCityNameByVoyageId(int id)
+        {
+            using (context = new AppDbContext())
+            {
+                Voyage v = context.Voyages.Find(id);
+                string cityName = v.Harbour.City.Name;
+                return cityName;
+            }
+        }
+        public string GetDesHarbourCityNameByVoyageId(int id)
+        {
+            using (context = new AppDbContext())
+            {
+                Voyage v = context.Voyages.Find(id);
+                string cityName = v.DestinationHarbour.City.Name;
+                return cityName;
+            }
+        }
+        public string GetHarbourCountryNameByVoyageId(int id)
+        {
+            using (context = new AppDbContext())
+            {
+                Voyage v = context.Voyages.Find(id);
+                string cName = v.Harbour.City.Country;
+                return cName;
+            }
+        }
+        public string GetDesHarbourCountryNameByVoyageId(int id)
+        {
+            using (context = new AppDbContext())
+            {
+                Voyage v = context.Voyages.Find(id);
+                string cName = v.DestinationHarbour.City.Country;
+                return cName;
+            }
+        }
     }
 
 }
