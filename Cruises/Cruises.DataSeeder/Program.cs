@@ -22,7 +22,6 @@ namespace Cruises.DataSeeder
             //CreatеCrewMembers();
             //CreatеShip();
             //CreatеVoyages();
-            //CreateImages();
 
         }
         public static void CreateCities()
@@ -120,13 +119,19 @@ namespace Cruises.DataSeeder
             Random random = new Random();
             List<string> models = new List<string>() { "B.001", "B.002", "B.003", "B.004", "B.005", "B.010" };
 
+            List<string> urls = new List<string>() {
+           "https://www.kongsberg.com/contentassets/e6051e3c95bb463fbbf7a1dda2c95571/nvc-376-wp-gold-kongsberg-10-cam1_10-color-1.jpg",
+           "https://www.bairdmaritime.com/wp-content/uploads/IC19082-8-0-031.jpg",
+           "https://www.simpsonmarine.com/wp-content/uploads/2022/10/navigation-helico-ncz9473-a3-1-scaled.jpg",
+           "https://southernboating.com/wp-content/uploads/2018/01/Ted-Neighbors-1_RT.jpg",
+           "https://cdn.boatinternational.com/convert/files/2022/07/76393b30-0096-11ed-aed3-f71d7c568098-AHPO-hero-Photography-guillaume-plisson.jpg/r%5Bwidth%5D=1920/76393b30-0096-11ed-aed3-f71d7c568098-AHPO-hero-Photography-guillaume-plisson.jpg"
+            };
+
             for (int i = 0; i < imaginaryShipName.Count; i++)
             {
                 int model = random.Next(0, models.Count);
                 int capacity = random.Next(50, 200);
-                int isFulll = random.Next(0, 1);
-                bool boolValue = (isFulll != 0);
-                Console.WriteLine(sS.CreateShip(imaginaryShipName[i], models[model], capacity, shipTypes[i], boolValue));
+                Console.WriteLine(sS.CreateShip(imaginaryShipName[i], models[model], capacity, urls[i], shipTypes[i]));
             }
         }
         public static void CreatеVoyages()
@@ -152,7 +157,8 @@ namespace Cruises.DataSeeder
                 int pInxed = random.Next(0, price.Count);
                 if (fHName != tHName)
                 {
-                    Console.WriteLine(vS.CreateVoyage(fHName, tHName, durations[dInxed], shipsName[ship], price[pInxed]));
+                    string voyageName = $"{fHName}-{tHName}";
+                    Console.WriteLine(vS.CreateVoyage(voyageName,fHName, tHName, durations[dInxed], shipsName[ship], price[pInxed]));
                 }
                 else
                 {
@@ -160,20 +166,6 @@ namespace Cruises.DataSeeder
                 }
             }
         }
-        public static void CreateImages()
-        {
-            List<string> urls = new List<string>() {
-           "https://www.kongsberg.com/contentassets/e6051e3c95bb463fbbf7a1dda2c95571/nvc-376-wp-gold-kongsberg-10-cam1_10-color-1.jpg",
-           "https://www.bairdmaritime.com/wp-content/uploads/IC19082-8-0-031.jpg",
-           "https://www.simpsonmarine.com/wp-content/uploads/2022/10/navigation-helico-ncz9473-a3-1-scaled.jpg",
-           "https://southernboating.com/wp-content/uploads/2018/01/Ted-Neighbors-1_RT.jpg",
-           "https://cdn.boatinternational.com/convert/files/2022/07/76393b30-0096-11ed-aed3-f71d7c568098-AHPO-hero-Photography-guillaume-plisson.jpg/r%5Bwidth%5D=1920/76393b30-0096-11ed-aed3-f71d7c568098-AHPO-hero-Photography-guillaume-plisson.jpg"
-            };
-            List<int> shipsId = sS.GetShipsId();
-            for (int i = 0; i < urls.Count; i++)
-            {
-                Console.WriteLine(sS.AddImageToShip(shipsId[i], urls[i]));
-            }
-        }
+       
     }
 }

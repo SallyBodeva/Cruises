@@ -8,6 +8,7 @@
     {
         [Key]
         public int Id { get; set; }
+        public string Name { get; set; }
         public int HarbourId { get; set; }
         public virtual Harbour Harbour { get; set; }
         public int DestinationHarbourId { get; set; }

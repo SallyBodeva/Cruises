@@ -11,7 +11,7 @@
     {
         private AppDbContext context;
 
-        public string CreateVoyage(string fromHarbourName, string toHarbourName, int duration, string shipName, decimal ticketPrice)
+        public string CreateVoyage(string name,string fromHarbourName, string toHarbourName, int duration, string shipName, decimal ticketPrice)
         {
             StringBuilder message = new StringBuilder();
             bool isValid = true;
@@ -48,6 +48,7 @@
                     Harbour s = this.context.Harbours.FirstOrDefault(x => x.Name == fromHarbourName);
                     Harbour d = this.context.Harbours.FirstOrDefault(x => x.Name == toHarbourName);
                     Ship sh = this.context.Ships.FirstOrDefault(x => x.Name == shipName);
+                  
                     if (s.Name == d.Name)
                     {
                         message.AppendLine($"Cannot assign a travel from one Harbour to the same Harbour");
@@ -56,6 +57,7 @@
                     {
                         Voyage v = new Voyage()
                         {
+                            Name=name,
                             Harbour = s,
                             DestinationHarbour = d,
                             Duration = duration,
@@ -225,5 +227,15 @@
                 return name;
             }
         }
+        public string GetVoyageNameById(int id)
+        {
+            using (context = new AppDbContext())
+            {
+                Voyage v = context.Voyages.Find(id);
+                string name = v.Name;
+                return name;
+            }
+        }
+        
     }
 }

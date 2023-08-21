@@ -54,13 +54,15 @@
             this.textBoxFromCountry = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(172, 164);
+            this.label1.Location = new System.Drawing.Point(335, 164);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(468, 15);
             this.label1.TabIndex = 0;
@@ -70,7 +72,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(237, 193);
+            this.label2.Location = new System.Drawing.Point(335, 193);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(326, 15);
             this.label2.TabIndex = 1;
@@ -78,9 +80,10 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(0, -2);
+            this.pictureBox1.Location = new System.Drawing.Point(1, -2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(803, 163);
+            this.pictureBox1.Size = new System.Drawing.Size(375, 163);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
@@ -275,11 +278,29 @@
             this.label6.TabIndex = 23;
             this.label6.Text = "Country:";
             // 
+            // textBoxName
+            // 
+            this.textBoxName.Location = new System.Drawing.Point(33, 193);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(254, 23);
+            this.textBoxName.TabIndex = 27;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(33, 175);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(42, 15);
+            this.label7.TabIndex = 28;
+            this.label7.Text = "Name:";
+            // 
             // VoyagesCatalogFormApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 450);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.textBoxToCountry);
             this.Controls.Add(this.textBoxFromCountry);
             this.Controls.Add(this.label5);
@@ -343,5 +364,7 @@
         private System.Windows.Forms.TextBox textBoxFromCountry;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.Label label7;
     }
 }

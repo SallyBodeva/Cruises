@@ -97,27 +97,6 @@ namespace Cruises.Data.Migrations
                     b.ToTable("Harbours");
                 });
 
-            modelBuilder.Entity("Cruises.Models.Image", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ShipId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Url")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ShipId");
-
-                    b.ToTable("Images");
-                });
-
             modelBuilder.Entity("Cruises.Models.Passenger", b =>
                 {
                     b.Property<int>("Id")
@@ -184,8 +163,8 @@ namespace Cruises.Data.Migrations
                     b.Property<int>("Capacity")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Is_Full")
-                        .HasColumnType("bit");
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Model")
                         .IsRequired()
@@ -261,6 +240,9 @@ namespace Cruises.Data.Migrations
                     b.Property<int>("HarbourId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ShipId")
                         .HasColumnType("int");
 
@@ -283,15 +265,6 @@ namespace Cruises.Data.Migrations
                     b.HasOne("Cruises.Models.City", "City")
                         .WithMany("Harbours")
                         .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Cruises.Models.Image", b =>
-                {
-                    b.HasOne("Cruises.Models.Ship", "Ship")
-                        .WithMany("Images")
-                        .HasForeignKey("ShipId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

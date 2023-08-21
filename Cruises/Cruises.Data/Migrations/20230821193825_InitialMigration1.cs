@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Cruises.Data.Migrations
 {
-    public partial class InitialMigration2 : Migration
+    public partial class InitialMigration1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -98,8 +98,8 @@ namespace Cruises.Data.Migrations
                     Name = table.Column<string>(maxLength: 100, nullable: false),
                     Model = table.Column<string>(maxLength: 20, nullable: false),
                     Capacity = table.Column<int>(nullable: false),
-                    ShipTypeId = table.Column<int>(nullable: false),
-                    Is_Full = table.Column<bool>(nullable: false)
+                    ImageUrl = table.Column<string>(nullable: true),
+                    ShipTypeId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -108,26 +108,6 @@ namespace Cruises.Data.Migrations
                         name: "FK_Ships_ShipTypes_ShipTypeId",
                         column: x => x.ShipTypeId,
                         principalTable: "ShipTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Images",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Url = table.Column<string>(nullable: false),
-                    ShipId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Images", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Images_Ships_ShipId",
-                        column: x => x.ShipId,
-                        principalTable: "Ships",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -162,6 +142,7 @@ namespace Cruises.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true),
                     HarbourId = table.Column<int>(nullable: false),
                     DestinationHarbourId = table.Column<int>(nullable: false),
                     Duration = table.Column<int>(nullable: false),
@@ -226,11 +207,6 @@ namespace Cruises.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Images_ShipId",
-                table: "Images",
-                column: "ShipId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Passengers_PhoneNumber",
                 table: "Passengers",
                 column: "PhoneNumber",
@@ -281,9 +257,6 @@ namespace Cruises.Data.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Images");
-
             migrationBuilder.DropTable(
                 name: "Reservations");
 

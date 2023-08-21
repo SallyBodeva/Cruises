@@ -13,7 +13,6 @@ namespace Cruises.Data
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<CrewMember> CrewMembers { get; set; }
         public virtual DbSet<Harbour> Harbours { get; set; }
-        public virtual DbSet<Image> Images { get; set; }
         public virtual DbSet<Passenger> Passengers { get; set; }
         public virtual DbSet<Reservation> Reservations { get; set; }
         public virtual DbSet<Ship> Ships { get; set; }

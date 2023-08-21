@@ -12,7 +12,7 @@ namespace Cruises.Service
         private AppDbContext context;
 
 
-        public string CreateShip(string name, string model, int capacity, string shipType, bool isFull)
+        public string CreateShip(string name, string model, int capacity,string url, string shipType)
         {
             StringBuilder message = new StringBuilder();
             bool isValid = true;
@@ -51,8 +51,8 @@ namespace Cruises.Service
                         Name = name,
                         Model = model,
                         Capacity = capacity,
-                        ShipType = st,
-                        Is_Full = isFull
+                        ImageUrl= url,
+                        ShipType = st
                     };
                     context.Ships.Add(s);
                     context.SaveChanges();
@@ -78,25 +78,22 @@ namespace Cruises.Service
             }
         }
 
-        public string AddImageToShip(int shiId, string url)
-        {
-            using (context = new AppDbContext())
-            {
-                Ship s = context.Ships.FirstOrDefault(x => x.Id == shiId);
-                if (s != null)
-                {
-                    Image i = new Image() { ShipId = shiId, Url = url };
-                    return "Image added successfully!";
-                }
-                return $"{nameof(Ship)} not found!";
-            }
-        }
+       
         public List<int> GetShipsId()
         {
             using (context = new AppDbContext())
             {
                 List<int> shipsId = context.Ships.Select(x => x.Id).ToList();
                 return shipsId;
+            }
+        }
+        public string GetShipImageById(int id)
+        {
+            using (context = new AppDbContext())
+            {
+                Voyage v = context.Voyages.Find(id);
+                string url = v.Ship.ImageUrl;
+                return url;
             }
         }
     }

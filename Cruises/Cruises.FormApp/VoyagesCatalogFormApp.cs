@@ -16,6 +16,7 @@ namespace Cruises.FormApp
         private VoyageService vService;
         private AdditionalService aService;
         private HarbourService hService;
+        private ShipService sService;
         private int voyageId;
         private static List<Voyage> voyages;
         public VoyagesCatalogFormApp()
@@ -24,6 +25,7 @@ namespace Cruises.FormApp
             vService = new VoyageService();
             aService = new AdditionalService();
             hService = new HarbourService();
+            sService = new ShipService();
         }
 
         private void VoyagesCatalogFormApp_Load(object sender, EventArgs e)
@@ -36,6 +38,8 @@ namespace Cruises.FormApp
 
         private void DataFill()
         {
+            textBoxName.Text = vService.GetVoyageNameById(voyageId);
+            pictureBox1.Load(sService.GetShipImageById(voyageId));
             textBoxFromHName.Text = vService.GetVoyageHarboursNameById(voyageId);
             textBoxFromCity.Text = hService.GetHarbourCityNameByVoyageId(voyageId);
             textBoxToHNmae.Text = vService.GetVoyageDestHarboursNameById(voyageId);
@@ -68,5 +72,6 @@ namespace Cruises.FormApp
             }
             DataFill();
         }
+
     }
 }
