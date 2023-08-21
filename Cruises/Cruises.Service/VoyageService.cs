@@ -168,6 +168,21 @@
             }
             return message.ToString().TrimEnd();
         }
+        public List<Voyage> GetVoyages()
+        {
+            using (context = new AppDbContext())
+            {
+                List<Voyage> voyages = context.Voyages.ToList();
+                return voyages;
+            }
+        }
+        public int GetVoyageId(Voyage voyage)
+        {
+            using (context = new AppDbContext())
+            {
+                return voyage.Id;
+            }
+        }
         public int GetVoyageDurationById(int voyageId)
         {
             using (context = new AppDbContext())
@@ -192,7 +207,23 @@
                 return v.TicketPrice;
             }
         }
-        // Paste it on the next line...
-
+        public string GetVoyageHarboursNameById(int id)
+        {
+            using (context = new AppDbContext())
+            {
+                Voyage v = context.Voyages.Find(id);
+                string name = v.Harbour.Name;
+                return name;
+            }
+        }
+        public string GetVoyageDestHarboursNameById(int id)
+        {
+            using (context = new AppDbContext())
+            {
+                Voyage v = context.Voyages.Find(id);
+                string name = v.DestinationHarbour.Name;
+                return name;
+            }
+        }
     }
 }
