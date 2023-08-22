@@ -35,7 +35,15 @@ namespace Cruises.FormApp
             int age = int.Parse(textBoxAge.Text);
             bool isStudent = radioButtonStudent.Checked;
             bool isRetiree = radioButtonRetiree.Checked;
-            string result = pService.AddPassenger(fName, lName, phoneNum, age, isStudent, isRetiree);
+            string result = string.Empty;
+            if (!pService.IsPassengerAlreayOurClient(phoneNum))
+            {
+                result = pService.AddPassenger(fName, lName, phoneNum, age, isStudent, isRetiree);
+            }
+            else
+            {
+                result = "Our old client pick a new adventure";
+            }
             int idPassenger = pService.GetPassengerIdByPhoneNum(phoneNum);
             int idVoyage = vService.GetVoyageIdByName(comboBoxVoyages.Text);
             DateTime date = dateTimePicker1.Value;

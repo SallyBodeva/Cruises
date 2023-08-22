@@ -151,6 +151,22 @@
                 }
             }
         }
+        public bool IsPassengerAlreayOurClient(string phoneNum)
+        {
+            using (context= new AppDbContext())
+            {
+                Passenger p = context.Passengers.FirstOrDefault(x => x.PhoneNumber == phoneNum);
+                List<Passenger> passengers = context.Passengers.ToList();
+                if (passengers.Contains(p))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
         public string MatchPassengerToVoyage(int passengeId, int voyageId, DateTime date)
         {
             using (context = new AppDbContext())
