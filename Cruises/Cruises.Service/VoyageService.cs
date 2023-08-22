@@ -236,6 +236,22 @@
                 return name;
             }
         }
-        
+        public int GetVoyageIdByName(string name)
+        {
+            using (context = new AppDbContext())
+            {
+                Voyage v = context.Voyages.FirstOrDefault(x => x.Name==name);
+                int id = v.Id;
+                return id;
+            }
+        }
+        public List<string> GetVoyagesName()
+        {
+            using (context= new AppDbContext())
+            {
+                List<string> names = context.Voyages.Select(x => x.Name).ToList();
+                return names;
+            }
+        }
     }
 }

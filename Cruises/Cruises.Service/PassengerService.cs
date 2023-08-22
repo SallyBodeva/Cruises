@@ -75,6 +75,14 @@
                 return context.Passengers.FirstOrDefault(x => x.Id == id);
             }
         }
+        public int GetPassengerIdByPhoneNum(string phoneNum)
+        {
+            using (context = new AppDbContext())
+            {
+                Passenger p = context.Passengers.FirstOrDefault(x => x.PhoneNumber == phoneNum);
+                return p.Id;
+            }
+        }
         public string GetPassengerInfoById(int id)
         {
             Passenger p = null;
@@ -99,6 +107,25 @@
                 {
                     return $"{nameof(Passenger)} not found!";
                 }
+            }
+        }
+        public string MatchPassengerToVoyage(int passengeId, int voyageId, DateTime date)
+        {
+            using (context = new AppDbContext())
+            {
+                Passenger p = context.Passengers.Find(passengeId);
+                Voyage v = context.Voyages.Find(voyageId);
+                if (p == null)
+                {
+                    return "Passenger not found!";
+                }
+                if (v == null)
+                {
+                    return "Voyage not found!";
+                }
+                context.Reservations.Add(new Reservation() { Passenger = p, Voyage = v, ReservationDate = date });
+                context.SaveChanges();
+                return "Reservation created!";
             }
         }
     }

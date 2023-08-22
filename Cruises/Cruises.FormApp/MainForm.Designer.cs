@@ -31,6 +31,7 @@
             this.WelcomeLabel = new System.Windows.Forms.Label();
             this.CrewFormaAppButon = new System.Windows.Forms.Button();
             this.buttonVoyagesCatalog = new System.Windows.Forms.Button();
+            this.buttonResevation = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // WelcomeLabel
@@ -63,11 +64,22 @@
             this.buttonVoyagesCatalog.UseVisualStyleBackColor = true;
             this.buttonVoyagesCatalog.Click += new System.EventHandler(this.buttonVoyagesCatalog_Click);
             // 
+            // buttonResevation
+            // 
+            this.buttonResevation.Location = new System.Drawing.Point(386, 108);
+            this.buttonResevation.Name = "buttonResevation";
+            this.buttonResevation.Size = new System.Drawing.Size(120, 78);
+            this.buttonResevation.TabIndex = 3;
+            this.buttonResevation.Text = "Make a reservation";
+            this.buttonResevation.UseVisualStyleBackColor = true;
+            this.buttonResevation.Click += new System.EventHandler(this.buttonResevation_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonResevation);
             this.Controls.Add(this.buttonVoyagesCatalog);
             this.Controls.Add(this.CrewFormaAppButon);
             this.Controls.Add(this.WelcomeLabel);
@@ -83,5 +95,6 @@
         private System.Windows.Forms.Label WelcomeLabel;
         private System.Windows.Forms.Button CrewFormaAppButon;
         private System.Windows.Forms.Button buttonVoyagesCatalog;
+        private System.Windows.Forms.Button buttonResevation;
     }
 }
