@@ -42,6 +42,8 @@ namespace Cruises.FormApp
             string resultManytoManyTables = pService.MatchPassengerToVoyage(idPassenger,idVoyage,date);
             string finalResult = $"{result}{Environment.NewLine}{resultManytoManyTables}";
             MessageBox.Show(finalResult);
+            ReceiptFormApp receiptFormApp = new ReceiptFormApp();
+            receiptFormApp.ShowDialog();
         }
 
         private void ReservationsFormApp_Load(object sender, EventArgs e)

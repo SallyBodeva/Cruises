@@ -253,5 +253,13 @@
                 return names;
             }
         }
+        public int GetLastAddedPassenger()
+        {
+            using (context= new AppDbContext())
+            {
+                int id = context.Reservations.Select(x => x.PassengerId).Last();
+                return id;
+            }
+        }
     }
 }

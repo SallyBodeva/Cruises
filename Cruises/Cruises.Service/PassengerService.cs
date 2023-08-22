@@ -83,6 +83,48 @@
                 return p.Id;
             }
         }
+        public string GetPassengerNameById(int id)
+        {
+            using (context = new AppDbContext())
+            {
+                Passenger p = context.Passengers.FirstOrDefault(x => x.Id == id);
+                string fullName = $"{p.FirstName} {p.LastName}";
+                return fullName;
+            }
+        }
+        public string GetPassengerPhoneById(int id)
+        {
+            using (context = new AppDbContext())
+            {
+                Passenger p = context.Passengers.FirstOrDefault(x => x.Id == id);
+                return p.PhoneNumber;
+            }
+        }
+        public bool IsPassengerStudent(int id)
+        {
+            using (context = new AppDbContext())
+            {
+                Passenger p = context.Passengers.FirstOrDefault(x => x.Id == id);
+                return p.IsStudent;
+            }
+        }
+        public bool IsPassengerRetiree(int id)
+        {
+            using (context = new AppDbContext())
+            {
+                Passenger p = context.Passengers.FirstOrDefault(x => x.Id == id);
+                return p.IsRetiree;
+            }
+        }
+        public decimal  GetPassengerTiocketPriceById(int id)
+        {
+            using (context = new AppDbContext())
+            {
+                Reservation p = context.Reservations.FirstOrDefault(x => x.PassengerId == id);
+                decimal price = p.Voyage.TicketPrice;
+                return price;
+            }
+        }
         public string GetPassengerInfoById(int id)
         {
             Passenger p = null;
