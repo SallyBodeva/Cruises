@@ -52,7 +52,7 @@
             // 
             this.textBoxPrice.Location = new System.Drawing.Point(132, 303);
             this.textBoxPrice.Name = "textBoxPrice";
-            this.textBoxPrice.Size = new System.Drawing.Size(155, 23);
+            this.textBoxPrice.Size = new System.Drawing.Size(90, 23);
             this.textBoxPrice.TabIndex = 2;
             // 
             // ReceiptFormApp

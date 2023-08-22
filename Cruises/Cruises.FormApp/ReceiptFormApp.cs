@@ -29,7 +29,8 @@ namespace Cruises.FormApp
             Passenger p = passengerService.GetPassengerById(passengerId);
             if (p.IsRetiree || p.IsStudent)
             {
-                textBoxPrice.Text = (passengerService.GetPassengerTiocketPriceById(passengerId)/2).ToString();
+                decimal price = passengerService.GetPassengerTiocketPriceById(passengerId) / 2;
+                textBoxPrice.Text = Math.Round(price,2).ToString();
             }
             else
             {

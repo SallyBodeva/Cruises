@@ -257,7 +257,9 @@
         {
             using (context= new AppDbContext())
             {
-                int id = context.Reservations.Select(x => x.PassengerId).Last();
+                List<Reservation> reservations = context.Reservations.ToList();
+                Reservation last = reservations.Last();
+                int id = last.PassengerId;
                 return id;
             }
         }
