@@ -116,11 +116,11 @@
                 return p.IsRetiree;
             }
         }
-        public decimal  GetPassengerTiocketPriceById(int id)
+        public decimal  GetLastTiocketPriceById()
         {
             using (context = new AppDbContext())
             {
-                Reservation p = context.Reservations.FirstOrDefault(x => x.PassengerId == id);
+                Reservation p = context.Reservations.OrderByDescending(x=>x.Id).First();
                 decimal price = p.Voyage.TicketPrice;
                 return price;
             }
