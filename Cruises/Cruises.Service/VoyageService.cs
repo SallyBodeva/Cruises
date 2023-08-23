@@ -11,7 +11,7 @@
     {
         private AppDbContext context;
 
-        public string CreateVoyage(string name,string fromHarbourName, string toHarbourName, int duration, string shipName, decimal ticketPrice)
+        public string CreateVoyage(string name, string fromHarbourName, string toHarbourName, int duration, string shipName, decimal ticketPrice)
         {
             StringBuilder message = new StringBuilder();
             bool isValid = true;
@@ -48,7 +48,7 @@
                     Harbour s = this.context.Harbours.FirstOrDefault(x => x.Name == fromHarbourName);
                     Harbour d = this.context.Harbours.FirstOrDefault(x => x.Name == toHarbourName);
                     Ship sh = this.context.Ships.FirstOrDefault(x => x.Name == shipName);
-                  
+
                     if (s.Name == d.Name)
                     {
                         message.AppendLine($"Cannot assign a travel from one Harbour to the same Harbour");
@@ -57,7 +57,7 @@
                     {
                         Voyage v = new Voyage()
                         {
-                            Name=name,
+                            Name = name,
                             Harbour = s,
                             DestinationHarbour = d,
                             Duration = duration,
@@ -121,10 +121,10 @@
         }
         public string UpdateTicketPriceByVoyageId(int id, decimal newTicketPrice)
         {
-            using (context= new AppDbContext())
+            using (context = new AppDbContext())
             {
                 Voyage v = this.context.Voyages.FirstOrDefault(x => x.Id == id);
-                if (v!=null)
+                if (v != null)
                 {
                     v.TicketPrice = newTicketPrice;
                     context.Update(v);
@@ -137,7 +137,7 @@
                 }
             }
         }
-        
+
         public string CreateReservation(int passengerId, int voyageId, DateTime reservationDate)
         {
             StringBuilder message = new StringBuilder();
@@ -240,26 +240,29 @@
         {
             using (context = new AppDbContext())
             {
-                Voyage v = context.Voyages.FirstOrDefault(x => x.Name==name);
+                Voyage v = context.Voyages.FirstOrDefault(x => x.Name == name);
                 int id = v.Id;
                 return id;
             }
         }
         public List<string> GetVoyagesName()
         {
-            using (context= new AppDbContext())
+            using (context = new AppDbContext())
             {
                 List<string> names = context.Voyages.Select(x => x.Name).ToList();
                 return names;
             }
         }
-        public int GetLastAddedPassenger()
+        public int GetLastAddedPassenger(string phoneNum)
         {
-            using (context= new AppDbContext())
+            using (context = new AppDbContext())
             {
-                List<Reservation> reservations = context.Reservations.ToList();
-                Reservation last = reservations.Last();
-                int id = last.PassengerId;
+                int id = context.Reservations
+                      .Where(r => r.Passenger.PhoneNumber == phoneNum)
+                      .OrderByDescending(r => r.Id) // Order by ReservationId to get the most recent
+                      .Select(r => r.PassengerId) // Select the PassengerId
+                      .FirstOrDefault(); // Get the first result or default (0) if not found
+       
                 return id;
             }
         }

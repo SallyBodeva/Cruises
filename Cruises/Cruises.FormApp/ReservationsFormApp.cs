@@ -44,6 +44,7 @@ namespace Cruises.FormApp
             {
                 result = "Our old client pick a new adventure";
             }
+            SharingData.Information = phoneNum;
             int idPassenger = pService.GetPassengerIdByPhoneNum(phoneNum);
             int idVoyage = vService.GetVoyageIdByName(comboBoxVoyages.Text);
             DateTime date = dateTimePicker1.Value;

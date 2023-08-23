@@ -23,14 +23,15 @@ namespace Cruises.FormApp
 
         private void ReceiptFormApp_Load(object sender, EventArgs e)
         {
-            int passengerId = voyageService.GetLastAddedPassenger();
+            string receivedInfo = SharingData.Information;
+            int passengerId = voyageService.GetLastAddedPassenger(receivedInfo);
             textBoxName.Text = passengerService.GetPassengerNameById(passengerId);
             textBoxPhoneNum.Text = passengerService.GetPassengerPhoneById(passengerId);
             Passenger p = passengerService.GetPassengerById(passengerId);
             if (p.IsRetiree || p.IsStudent)
             {
                 decimal price = passengerService.GetPassengerTiocketPriceById(passengerId) / 2;
-                textBoxPrice.Text = Math.Round(price,2).ToString();
+                textBoxPrice.Text = Math.Round(price, 2).ToString();
             }
             else
             {
