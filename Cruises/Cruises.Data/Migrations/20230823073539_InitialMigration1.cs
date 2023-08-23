@@ -174,13 +174,15 @@ namespace Cruises.Data.Migrations
                 name: "Reservations",
                 columns: table => new
                 {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     PassengerId = table.Column<int>(nullable: false),
                     VoyageId = table.Column<int>(nullable: false),
                     ReservationDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Reservations", x => new { x.PassengerId, x.VoyageId });
+                    table.PrimaryKey("PK_Reservations", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Reservations_Passengers_PassengerId",
                         column: x => x.PassengerId,
@@ -211,6 +213,11 @@ namespace Cruises.Data.Migrations
                 table: "Passengers",
                 column: "PhoneNumber",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reservations_PassengerId",
+                table: "Reservations",
+                column: "PassengerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reservations_VoyageId",

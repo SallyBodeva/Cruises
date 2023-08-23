@@ -253,17 +253,13 @@
                 return names;
             }
         }
-        public int GetLastAddedPassenger(string phoneNum)
+        public int GetLastAddedPassenger()
         {
             using (context = new AppDbContext())
             {
-                int id = context.Reservations
-                      .Where(r => r.Passenger.PhoneNumber == phoneNum)
-                      .OrderByDescending(r => r.Id) // Order by ReservationId to get the most recent
-                      .Select(r => r.PassengerId) // Select the PassengerId
-                      .FirstOrDefault(); // Get the first result or default (0) if not found
-       
-                return id;
+                List<Reservation> reservations = context.Reservations.ToList();
+                Reservation last = reservations.Last();
+                return last.PassengerId;
             }
         }
     }

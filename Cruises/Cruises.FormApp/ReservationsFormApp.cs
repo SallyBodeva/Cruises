@@ -60,6 +60,6 @@ namespace Cruises.FormApp
             List<string> voyagesNames = vService.GetVoyagesName();
             voyagesNames.ForEach(x => comboBoxVoyages.Items.Add(x));
         }
-       
+
     }
 }

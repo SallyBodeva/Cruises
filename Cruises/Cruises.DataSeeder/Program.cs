@@ -15,13 +15,13 @@ namespace Cruises.DataSeeder
         private static ShipService sS = new ShipService();
         static void Main()
         {
-            //CreateCities();
-            //CreatеShipTypes();
-            //CreatеHarbours();
-            //CreatеPassengers();
-            //CreatеCrewMembers();
-            //CreatеShip();
-            //CreatеVoyages();
+            CreateCities();
+            CreatеShipTypes();
+            CreatеHarbours();
+            CreatеPassengers();
+            CreatеCrewMembers();
+            CreatеShip();
+            CreatеVoyages();
 
         }
         public static void CreateCities()

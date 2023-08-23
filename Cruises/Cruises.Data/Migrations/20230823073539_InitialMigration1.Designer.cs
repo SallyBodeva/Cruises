@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cruises.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230821193825_InitialMigration1")]
+    [Migration("20230823073539_InitialMigration1")]
     partial class InitialMigration1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -139,16 +139,23 @@ namespace Cruises.Data.Migrations
 
             modelBuilder.Entity("Cruises.Models.Reservation", b =>
                 {
-                    b.Property<int>("PassengerId")
-                        .HasColumnType("int");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("VoyageId")
+                    b.Property<int>("PassengerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ReservationDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("PassengerId", "VoyageId");
+                    b.Property<int>("VoyageId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PassengerId");
 
                     b.HasIndex("VoyageId");
 

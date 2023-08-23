@@ -23,8 +23,7 @@ namespace Cruises.FormApp
 
         private void ReceiptFormApp_Load(object sender, EventArgs e)
         {
-            string receivedInfo = SharingData.Information;
-            int passengerId = voyageService.GetLastAddedPassenger(receivedInfo);
+            int passengerId = voyageService.GetLastAddedPassenger();
             textBoxName.Text = passengerService.GetPassengerNameById(passengerId);
             textBoxPhoneNum.Text = passengerService.GetPassengerPhoneById(passengerId);
             Passenger p = passengerService.GetPassengerById(passengerId);

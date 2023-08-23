@@ -36,10 +36,6 @@ namespace Cruises.Data
                 option.HasKey(x => new { x.ShipId, x.CrewMemberId });
             });
 
-            modelBuilder.Entity<Reservation>(option =>
-            {
-                option.HasKey(x => new { x.PassengerId, x.VoyageId });
-            });
 
             modelBuilder.Entity<Ship>(option =>
             {
@@ -62,10 +58,10 @@ namespace Cruises.Data
             });
 
             modelBuilder.Entity<Passenger>()
-                .HasMany(r => r.Reservations)
-                .WithOne(p => p.Passenger)
-                .HasForeignKey(r => r.PassengerId)
-                .OnDelete(DeleteBehavior.Restrict);
+               .HasMany(r => r.Reservations)
+               .WithOne(p => p.Passenger)
+               .HasForeignKey(r => r.PassengerId)
+               .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<CrewMember>()
                 .HasMany(scm => scm.ShipCrewMembers)

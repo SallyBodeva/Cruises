@@ -137,19 +137,23 @@ namespace Cruises.Data.Migrations
 
             modelBuilder.Entity("Cruises.Models.Reservation", b =>
                 {
-                    b.Property<int>("PassengerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("VoyageId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("PassengerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ReservationDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("PassengerId", "VoyageId");
+                    b.Property<int>("VoyageId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PassengerId");
 
                     b.HasIndex("VoyageId");
 

@@ -30,21 +30,21 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBoxFName = new System.Windows.Forms.TextBox();
-            this.textBoxLname = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBoxPhoneNum = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBoxVoyages = new System.Windows.Forms.ComboBox();
+            this.buttonMakeReservation = new System.Windows.Forms.Button();
+            this.radioButtonRetiree = new System.Windows.Forms.RadioButton();
+            this.radioButtonStudent = new System.Windows.Forms.RadioButton();
             this.textBoxAge = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.radioButtonStudent = new System.Windows.Forms.RadioButton();
-            this.radioButtonRetiree = new System.Windows.Forms.RadioButton();
-            this.buttonMakeReservation = new System.Windows.Forms.Button();
-            this.comboBoxVoyages = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
+            this.textBoxPhoneNum = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxLname = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBoxFName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,53 +82,70 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Passenger\'s info:";
             // 
-            // label2
+            // label7
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 29);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 15);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "First name:";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(361, 81);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(34, 15);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Date:";
             // 
-            // textBoxFName
+            // dateTimePicker1
             // 
-            this.textBoxFName.Location = new System.Drawing.Point(33, 47);
-            this.textBoxFName.Name = "textBoxFName";
-            this.textBoxFName.Size = new System.Drawing.Size(221, 23);
-            this.textBoxFName.TabIndex = 1;
+            this.dateTimePicker1.Location = new System.Drawing.Point(361, 103);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
+            this.dateTimePicker1.TabIndex = 13;
             // 
-            // textBoxLname
+            // label6
             // 
-            this.textBoxLname.Location = new System.Drawing.Point(34, 103);
-            this.textBoxLname.Name = "textBoxLname";
-            this.textBoxLname.Size = new System.Drawing.Size(221, 23);
-            this.textBoxLname.TabIndex = 3;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(361, 19);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(186, 15);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Choose your desirable adventure::";
             // 
-            // label3
+            // comboBoxVoyages
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(34, 85);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 15);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Last name:";
+            this.comboBoxVoyages.FormattingEnabled = true;
+            this.comboBoxVoyages.Location = new System.Drawing.Point(361, 47);
+            this.comboBoxVoyages.Name = "comboBoxVoyages";
+            this.comboBoxVoyages.Size = new System.Drawing.Size(199, 23);
+            this.comboBoxVoyages.TabIndex = 11;
             // 
-            // textBoxPhoneNum
+            // buttonMakeReservation
             // 
-            this.textBoxPhoneNum.Location = new System.Drawing.Point(34, 158);
-            this.textBoxPhoneNum.Name = "textBoxPhoneNum";
-            this.textBoxPhoneNum.Size = new System.Drawing.Size(221, 23);
-            this.textBoxPhoneNum.TabIndex = 5;
+            this.buttonMakeReservation.Location = new System.Drawing.Point(199, 289);
+            this.buttonMakeReservation.Name = "buttonMakeReservation";
+            this.buttonMakeReservation.Size = new System.Drawing.Size(196, 36);
+            this.buttonMakeReservation.TabIndex = 10;
+            this.buttonMakeReservation.Text = "Make a resevation";
+            this.buttonMakeReservation.UseVisualStyleBackColor = true;
+            this.buttonMakeReservation.Click += new System.EventHandler(this.buttonMakeReservation_Click);
             // 
-            // label4
+            // radioButtonRetiree
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(34, 140);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(89, 15);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Phone number:";
+            this.radioButtonRetiree.AutoSize = true;
+            this.radioButtonRetiree.Location = new System.Drawing.Point(160, 251);
+            this.radioButtonRetiree.Name = "radioButtonRetiree";
+            this.radioButtonRetiree.Size = new System.Drawing.Size(61, 19);
+            this.radioButtonRetiree.TabIndex = 9;
+            this.radioButtonRetiree.TabStop = true;
+            this.radioButtonRetiree.Text = "Retiree";
+            this.radioButtonRetiree.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonStudent
+            // 
+            this.radioButtonStudent.AutoSize = true;
+            this.radioButtonStudent.Location = new System.Drawing.Point(34, 251);
+            this.radioButtonStudent.Name = "radioButtonStudent";
+            this.radioButtonStudent.Size = new System.Drawing.Size(66, 19);
+            this.radioButtonStudent.TabIndex = 8;
+            this.radioButtonStudent.TabStop = true;
+            this.radioButtonStudent.Text = "Student";
+            this.radioButtonStudent.UseVisualStyleBackColor = true;
             // 
             // textBoxAge
             // 
@@ -146,70 +163,53 @@
             this.label5.TabIndex = 6;
             this.label5.Text = "Age:";
             // 
-            // radioButtonStudent
+            // textBoxPhoneNum
             // 
-            this.radioButtonStudent.AutoSize = true;
-            this.radioButtonStudent.Location = new System.Drawing.Point(34, 251);
-            this.radioButtonStudent.Name = "radioButtonStudent";
-            this.radioButtonStudent.Size = new System.Drawing.Size(66, 19);
-            this.radioButtonStudent.TabIndex = 8;
-            this.radioButtonStudent.TabStop = true;
-            this.radioButtonStudent.Text = "Student";
-            this.radioButtonStudent.UseVisualStyleBackColor = true;
+            this.textBoxPhoneNum.Location = new System.Drawing.Point(34, 158);
+            this.textBoxPhoneNum.Name = "textBoxPhoneNum";
+            this.textBoxPhoneNum.Size = new System.Drawing.Size(221, 23);
+            this.textBoxPhoneNum.TabIndex = 5;
             // 
-            // radioButtonRetiree
+            // label4
             // 
-            this.radioButtonRetiree.AutoSize = true;
-            this.radioButtonRetiree.Location = new System.Drawing.Point(160, 251);
-            this.radioButtonRetiree.Name = "radioButtonRetiree";
-            this.radioButtonRetiree.Size = new System.Drawing.Size(61, 19);
-            this.radioButtonRetiree.TabIndex = 9;
-            this.radioButtonRetiree.TabStop = true;
-            this.radioButtonRetiree.Text = "Retiree";
-            this.radioButtonRetiree.UseVisualStyleBackColor = true;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(34, 140);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(89, 15);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Phone number:";
             // 
-            // buttonMakeReservation
+            // textBoxLname
             // 
-            this.buttonMakeReservation.Location = new System.Drawing.Point(199, 289);
-            this.buttonMakeReservation.Name = "buttonMakeReservation";
-            this.buttonMakeReservation.Size = new System.Drawing.Size(196, 36);
-            this.buttonMakeReservation.TabIndex = 10;
-            this.buttonMakeReservation.Text = "Make a resevation";
-            this.buttonMakeReservation.UseVisualStyleBackColor = true;
-            this.buttonMakeReservation.Click += new System.EventHandler(this.buttonMakeReservation_Click);
+            this.textBoxLname.Location = new System.Drawing.Point(34, 103);
+            this.textBoxLname.Name = "textBoxLname";
+            this.textBoxLname.Size = new System.Drawing.Size(221, 23);
+            this.textBoxLname.TabIndex = 3;
             // 
-            // comboBoxVoyages
+            // label3
             // 
-            this.comboBoxVoyages.FormattingEnabled = true;
-            this.comboBoxVoyages.Location = new System.Drawing.Point(361, 47);
-            this.comboBoxVoyages.Name = "comboBoxVoyages";
-            this.comboBoxVoyages.Size = new System.Drawing.Size(199, 23);
-            this.comboBoxVoyages.TabIndex = 11;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(34, 85);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(64, 15);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Last name:";
             // 
-            // label6
+            // textBoxFName
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(361, 19);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(186, 15);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Choose your desirable adventure::";
+            this.textBoxFName.Location = new System.Drawing.Point(33, 47);
+            this.textBoxFName.Name = "textBoxFName";
+            this.textBoxFName.Size = new System.Drawing.Size(221, 23);
+            this.textBoxFName.TabIndex = 1;
             // 
-            // dateTimePicker1
+            // label2
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(361, 103);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
-            this.dateTimePicker1.TabIndex = 13;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(361, 81);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(34, 15);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Date:";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(33, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 15);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "First name:";
             // 
             // ReservationsFormApp
             // 
