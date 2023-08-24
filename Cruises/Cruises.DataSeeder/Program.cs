@@ -15,13 +15,13 @@ namespace Cruises.DataSeeder
         private static ShipService sS = new ShipService();
         static void Main()
         {
-            CreateCities();
-            CreatеShipTypes();
-            CreatеHarbours();
-            CreatеPassengers();
-            CreatеCrewMembers();
-            CreatеShip();
-            CreatеVoyages();
+            //CreateCities();
+            //CreatеShipTypes();
+            //CreatеHarbours();
+            //CreatеPassengers();
+            //CreatеCrewMembers();
+            //CreatеShip();
+            //CreatеVoyages();
 
         }
         public static void CreateCities()
@@ -121,7 +121,7 @@ namespace Cruises.DataSeeder
 
             List<string> urls = new List<string>() {
            "https://www.kongsberg.com/contentassets/e6051e3c95bb463fbbf7a1dda2c95571/nvc-376-wp-gold-kongsberg-10-cam1_10-color-1.jpg",
-           "https://www.bairdmaritime.com/wp-content/uploads/IC19082-8-0-031.jpg",
+           "https://static.vesselfinder.net/images/media/414f1d1ad653c6ed574c751b5568c3af.jpg",
            "https://www.simpsonmarine.com/wp-content/uploads/2022/10/navigation-helico-ncz9473-a3-1-scaled.jpg",
            "https://southernboating.com/wp-content/uploads/2018/01/Ted-Neighbors-1_RT.jpg",
            "https://cdn.boatinternational.com/convert/files/2022/07/76393b30-0096-11ed-aed3-f71d7c568098-AHPO-hero-Photography-guillaume-plisson.jpg/r%5Bwidth%5D=1920/76393b30-0096-11ed-aed3-f71d7c568098-AHPO-hero-Photography-guillaume-plisson.jpg"

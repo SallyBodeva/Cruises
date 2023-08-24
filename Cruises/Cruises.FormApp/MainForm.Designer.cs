@@ -32,6 +32,7 @@
             this.CrewFormaAppButon = new System.Windows.Forms.Button();
             this.buttonVoyagesCatalog = new System.Windows.Forms.Button();
             this.buttonResevation = new System.Windows.Forms.Button();
+            this.buttonShipsCatalog = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // WelcomeLabel
@@ -60,7 +61,7 @@
             this.buttonVoyagesCatalog.Name = "buttonVoyagesCatalog";
             this.buttonVoyagesCatalog.Size = new System.Drawing.Size(120, 74);
             this.buttonVoyagesCatalog.TabIndex = 2;
-            this.buttonVoyagesCatalog.Text = "Voyages- Catalog";
+            this.buttonVoyagesCatalog.Text = "Voyages Catalog";
             this.buttonVoyagesCatalog.UseVisualStyleBackColor = true;
             this.buttonVoyagesCatalog.Click += new System.EventHandler(this.buttonVoyagesCatalog_Click);
             // 
@@ -74,11 +75,22 @@
             this.buttonResevation.UseVisualStyleBackColor = true;
             this.buttonResevation.Click += new System.EventHandler(this.buttonResevation_Click);
             // 
+            // buttonShipsCatalog
+            // 
+            this.buttonShipsCatalog.Location = new System.Drawing.Point(557, 108);
+            this.buttonShipsCatalog.Name = "buttonShipsCatalog";
+            this.buttonShipsCatalog.Size = new System.Drawing.Size(120, 78);
+            this.buttonShipsCatalog.TabIndex = 4;
+            this.buttonShipsCatalog.Text = "Ships Catalog";
+            this.buttonShipsCatalog.UseVisualStyleBackColor = true;
+            this.buttonShipsCatalog.Click += new System.EventHandler(this.buttonShipsCatalog_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonShipsCatalog);
             this.Controls.Add(this.buttonResevation);
             this.Controls.Add(this.buttonVoyagesCatalog);
             this.Controls.Add(this.CrewFormaAppButon);
@@ -96,5 +108,6 @@
         private System.Windows.Forms.Button CrewFormaAppButon;
         private System.Windows.Forms.Button buttonVoyagesCatalog;
         private System.Windows.Forms.Button buttonResevation;
+        private System.Windows.Forms.Button buttonShipsCatalog;
     }
 }

@@ -34,5 +34,11 @@ namespace Cruises.FormApp
             ReservationsFormApp rFA = new ReservationsFormApp();
             rFA.ShowDialog();
         }
+
+        private void buttonShipsCatalog_Click(object sender, EventArgs e)
+        {
+            ShipsCatalogFormApp sFA = new ShipsCatalogFormApp();
+            sFA.ShowDialog();
+        }
     }
 }

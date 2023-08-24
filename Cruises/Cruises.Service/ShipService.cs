@@ -2,6 +2,7 @@
 using Cruises.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 
@@ -77,8 +78,6 @@ namespace Cruises.Service
                 return names;
             }
         }
-
-       
         public List<int> GetShipsId()
         {
             using (context = new AppDbContext())
@@ -94,6 +93,56 @@ namespace Cruises.Service
                 Voyage v = context.Voyages.Find(id);
                 string url = v.Ship.ImageUrl;
                 return url;
+            }
+        }
+        public List<Ship> GetShips()
+        {
+            using (context = new AppDbContext())
+            {
+                List<Ship> ships = this.context.Ships.ToList();
+                return ships;
+            }
+        }
+        public string GetShipName(int id)
+        {
+            using (context = new AppDbContext())
+            {
+                Ship s = context.Ships.Find(id);
+                return s.Name;
+            }
+        }
+        public string GetShipModel(int id)
+        {
+            using (context = new AppDbContext())
+            {
+
+                Ship s = context.Ships.Find(id);
+                return s.Model;
+            }
+        }
+        public int GetShipCapacity(int id)
+        {
+            using (context = new AppDbContext())
+            {
+                Ship s = context.Ships.Find(id);
+                return s.Capacity;
+            }
+        }
+        public string GetShipImageURL(int id)
+        {
+            using (context = new AppDbContext())
+            {
+
+                Ship s = context.Ships.Find(id);
+                return s.ImageUrl;
+            }
+        }
+        public string GetShipType(int id)
+        {
+            using (context = new AppDbContext())
+            {
+                Ship s = context.Ships.Find(id);
+                return s.ShipType.Name;
             }
         }
     }
