@@ -107,10 +107,10 @@
                 StringBuilder message = new StringBuilder();
                 message.AppendLine($"{nameof(Voyage)} info: ");
                 message.AppendLine($"\tId: {v.Id}");
-                message.AppendLine($"\tFrom: {v.Harbour.Name}");
-                message.AppendLine($"\tTo: {v.DestinationHarbour.Name}");
+                message.AppendLine($"\tFrom: {v.HarbourId} (harbour id)");
+                message.AppendLine($"\tTo: {v.DestinationHarbourId} (harbour id)");
                 message.AppendLine($"\tDuration: {v.Duration} hours");
-                message.AppendLine($"\tShip: {v.Ship.Name}");
+                message.AppendLine($"\tShip id: {v.ShipId}");
                 message.AppendLine($"\tTicket price: {v.TicketPrice}");
                 return message.ToString().TrimEnd();
             }
@@ -262,36 +262,12 @@
                 return last.PassengerId;
             }
         }
-        public int GetProjectsPagesCount(int count = 10)
+        public int GetVoyagesPagesCount(int count = 10)
         {
             using (context = new AppDbContext())
             {
                 return (int)Math.Ceiling(context.Voyages.Count() / (double)count);
             }
-        }
-        public string GetAllVoyagesInfo(int page = 1, int count = 10)
-        {
-            StringBuilder msg = new StringBuilder();
-            string firstRow = $"| {"Id",-4} | {"Name",-25} | {"From Harbour: ",-30} | {"To Harbour",-30} | {"Duration",-12} | {"Ship name",-20} | {"Ticket price",-20} |";
-
-            string line = $"|{new string('-', firstRow.Length - 2)}|";
-
-            using (context = new AppDbContext())
-            {
-                List<Voyage> voyages = context.Voyages.Skip((page - 1) * count).Take(count).ToList();
-                msg.AppendLine(firstRow);
-                msg.AppendLine(line);
-                foreach (var v in voyages)
-                {
-                    string info = $"| {v.Id,-4} | {v.Name,-25} | {v.Harbour.Name,-30} | {v.DestinationHarbour.Name,-30} | {v.Duration,-12} | {v.Ship.Name,-20}  | {v.TicketPrice,-20} |";
-                    msg.AppendLine(info);
-                    msg.AppendLine(line);
-                }
-                int pageCount = (int)Math.Ceiling(context.Voyages.Count() / (decimal)count);
-                msg.AppendLine($"Page: {page} / {pageCount}");
-            }
-
-            return msg.ToString().TrimEnd();
         }
     }
 }

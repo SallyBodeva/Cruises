@@ -44,7 +44,6 @@
                 }
             }
         }
-
         public void GetExactVoyageInfo()
         {
             try
@@ -69,7 +68,7 @@
         public void Commands()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Projects menu:");
+            sb.AppendLine($"Voyages menu:");
             sb.AppendLine($"\t0: Back");
             sb.AppendLine($"\t1: Get exact voyage info");
             Console.WriteLine(sb.ToString().TrimEnd());
