@@ -89,6 +89,54 @@
                 }
             }
         }
+        public string GetAllCrewMembersInfo(int page = 1, int count = 10)
+        {
+            StringBuilder msg = new StringBuilder();
+            string firstRow = $"| {"Id",-4} | {"First name",-12} | {"Last name",-12} | {"Age",-8} | {"Rating",-15} | {"Position",-15} |";
+
+            string line = $"|{new string('-', firstRow.Length - 2)}|";
+
+            using (context = new AppDbContext())
+            {
+                List<CrewMember> crewMembers = context.CrewMembers.Skip((page - 1) * count).Take(count).ToList();
+                msg.AppendLine(firstRow);
+                msg.AppendLine(line);
+                foreach (var c in crewMembers)
+                {
+                    string info = $"| {c.Id,-4} | {c.FirstName,-12} | {c.LastName,-12} | {c.Age,-8} | {c.Rating,-15} | {c.Position,-15} |";
+                    msg.AppendLine(info);
+                    msg.AppendLine(line);
+                }
+                int pageCount = (int)Math.Ceiling(context.CrewMembers.Count() / (decimal)count);
+                msg.AppendLine($"Page: {page} / {pageCount}");
+            }
+
+            return msg.ToString().TrimEnd();
+        }
+        public string GetCrewMemebrInfo(int id)
+        {
+            CrewMember c = null;
+            using (context = new AppDbContext())
+            {
+                c = context.CrewMembers.Find(id);
+            }
+            if (c != null)
+            {
+                StringBuilder masege = new StringBuilder();
+                masege.AppendLine($"Employee info: ");
+                masege.AppendLine($"\tId: { c.Id}");
+                masege.AppendLine($"\tFirst name: {c.FirstName}");
+                masege.AppendLine($"\tLast name: {c.LastName}");
+                masege.AppendLine($"\tAge: {c.Age}");
+                masege.AppendLine($"\tRating: {c.Rating}");
+                masege.AppendLine($"\tPosition: {c.Position}");
+                return masege.ToString().TrimEnd();
+            }
+            else
+            {
+                return $"Crew member not found!";
+            }
+        }
         public List<string> GetCrewMemberBasicInfo(int page = 1, int count = 10)
         {
             List<string> list = null;
