@@ -141,14 +141,46 @@
                     msg.AppendLine($"\tLast name: {p.LastName}");
                     msg.AppendLine($"\tAge: {p.Age}");
                     msg.AppendLine($"\tPhone number: {p.PhoneNumber}");
-                    msg.AppendLine($"\t Student: {p.IsStudent}");
-                    msg.AppendLine($"\t Retiree: {p.IsRetiree}");
+                    msg.AppendLine($"\tStudent: {p.IsStudent}");
+                    msg.AppendLine($"\tRetiree: {p.IsRetiree}");
                     return msg.ToString().TrimEnd();
                 }
                 else
                 {
                     return $"{nameof(Passenger)} not found!";
                 }
+            }
+        }
+        public string GetAllPassengersInfo(int page = 1, int count = 10)
+        {
+            StringBuilder msg = new StringBuilder();
+            string firstRow = $"| {"Id",-4} | {"First name",-12} | {"Last name",-12} | {"Age",-8} | {"Phone number",-12} | {"Student",-10} | {"Retiree",-10} |";
+
+            string line = $"|{new string('-', firstRow.Length - 2)}| ";
+
+            using (context = new AppDbContext())
+            {
+                List<Passenger> passengers = context.Passengers.Skip((page - 1) * count).Take(count).ToList();
+                msg.AppendLine(firstRow);
+                msg.AppendLine(line);
+                foreach (var p in passengers)
+                {
+                    string info = $"| {p.Id,-4} | {p.FirstName,-12} | {p.LastName,-12} | {p.Age,-8} | {p.PhoneNumber,-12} | {p.IsStudent,-10} | {p.IsRetiree,-10} |";
+                    msg.AppendLine(info);
+                    msg.AppendLine(line);
+                }
+                int pageCount = (int)Math.Ceiling(context.Passengers.Count() / (decimal)count);
+                msg.AppendLine($"Page: {page} / {pageCount}");
+            }
+
+            return msg.ToString().TrimEnd();
+
+        }
+        public int GetPassengersPagesCount(int count = 10)
+        {
+            using (context = new AppDbContext())
+            {
+                return (int)Math.Ceiling(context.Passengers.Count() / (double)count);
             }
         }
         public bool IsPassengerAlreayOurClient(string phoneNum)
