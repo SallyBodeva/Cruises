@@ -145,5 +145,13 @@ namespace Cruises.Service
                 return s.ShipType.Name;
             }
         }
+        public List<string> GetBasicShipInfo()
+        {
+            using (context = new AppDbContext())
+            {
+                List<string> list = context.Ships.Select(x => $"{x.Name} - {x.ShipType.Name}").ToList();
+                return list;
+            }
+        }
     }
 }

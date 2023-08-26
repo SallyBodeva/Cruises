@@ -33,6 +33,7 @@
             this.buttonVoyagesCatalog = new System.Windows.Forms.Button();
             this.buttonResevation = new System.Windows.Forms.Button();
             this.buttonShipsCatalog = new System.Windows.Forms.Button();
+            this.buttonVIP = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // WelcomeLabel
@@ -85,11 +86,22 @@
             this.buttonShipsCatalog.UseVisualStyleBackColor = true;
             this.buttonShipsCatalog.Click += new System.EventHandler(this.buttonShipsCatalog_Click);
             // 
+            // buttonVIP
+            // 
+            this.buttonVIP.Location = new System.Drawing.Point(74, 221);
+            this.buttonVIP.Name = "buttonVIP";
+            this.buttonVIP.Size = new System.Drawing.Size(118, 74);
+            this.buttonVIP.TabIndex = 5;
+            this.buttonVIP.Text = "Create your own VIP voyage";
+            this.buttonVIP.UseVisualStyleBackColor = true;
+            this.buttonVIP.Click += new System.EventHandler(this.buttonVIP_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonVIP);
             this.Controls.Add(this.buttonShipsCatalog);
             this.Controls.Add(this.buttonResevation);
             this.Controls.Add(this.buttonVoyagesCatalog);
@@ -109,5 +121,6 @@
         private System.Windows.Forms.Button buttonVoyagesCatalog;
         private System.Windows.Forms.Button buttonResevation;
         private System.Windows.Forms.Button buttonShipsCatalog;
+        private System.Windows.Forms.Button buttonVIP;
     }
 }

@@ -3,6 +3,7 @@
     using Cruises.Data;
     using Cruises.Models;
     using Cruises.Service;
+    using Microsoft.EntityFrameworkCore.Query.Internal;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -152,6 +153,14 @@
                 Voyage v = context.Voyages.Find(id);
                 string cName = v.DestinationHarbour.City.Country;
                 return cName;
+            }
+        }
+        public List<string> GetBasicHarbourInfo()
+        {
+            using (context= new AppDbContext())
+            {
+                List<string> list = context.Harbours.Select(x => $"{x.Name} - {x.City.Name} {x.City.Country}").ToList();
+                return list;
             }
         }
     }

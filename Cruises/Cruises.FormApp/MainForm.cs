@@ -40,5 +40,11 @@ namespace Cruises.FormApp
             ShipsCatalogFormApp sFA = new ShipsCatalogFormApp();
             sFA.ShowDialog();
         }
+
+        private void buttonVIP_Click(object sender, EventArgs e)
+        {
+            VIPVoyagesFormApp vFA = new VIPVoyagesFormApp();
+            vFA.ShowDialog();
+        }
     }
 }

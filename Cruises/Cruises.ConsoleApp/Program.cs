@@ -29,9 +29,6 @@
                     case "3":
                         new VoyageController();
                         break;
-                    case "4":
-                        new ShipController();
-                        break;
                     default:
                         Console.WriteLine("Invalid command!");
                         break;
