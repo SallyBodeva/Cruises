@@ -204,5 +204,13 @@
                 return message.ToString().TrimEnd();
             }
         }
+        public List<string> GetCrewInfo()
+        {
+            using (context = new AppDbContext())
+            {
+                List<string> list = context.CrewMembers.Select(x => $"{x.Id} - {x.FirstName} {x.LastName}").ToList();
+                return list;
+            }
+        }
     }
 }

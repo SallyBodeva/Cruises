@@ -269,5 +269,13 @@
                 return (int)Math.Ceiling(context.Voyages.Count() / (double)count);
             }
         }
+        public List<string> GetVoyagesInfo()
+        {
+            using (context = new AppDbContext())
+            {
+                List<string> list = context.Voyages.Select(x => $"{x.Id} - {x.Name}").ToList();
+                return list;
+            }
+        }
     }
 }
