@@ -19,7 +19,6 @@
         public int ShipTypeId { get; set; }
         public virtual ShipType ShipType { get; set; }
 
-        public virtual ICollection<ShipCrewMember> ShipCrewMembers { get; set; } = new List<ShipCrewMember>();
 
     }
 }

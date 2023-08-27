@@ -70,6 +70,7 @@
             this.buttonPrevousV.TabIndex = 2;
             this.buttonPrevousV.Text = "<<";
             this.buttonPrevousV.UseVisualStyleBackColor = true;
+            this.buttonPrevousV.Click += new System.EventHandler(this.buttonPrevousV_Click);
             // 
             // buttonNetxV
             // 
@@ -79,6 +80,7 @@
             this.buttonNetxV.TabIndex = 3;
             this.buttonNetxV.Text = ">>";
             this.buttonNetxV.UseVisualStyleBackColor = true;
+            this.buttonNetxV.Click += new System.EventHandler(this.buttonNetxV_Click);
             // 
             // labelSteps
             // 
@@ -107,6 +109,7 @@
             this.buttonNextCrew.TabIndex = 8;
             this.buttonNextCrew.Text = ">>";
             this.buttonNextCrew.UseVisualStyleBackColor = true;
+            this.buttonNextCrew.Click += new System.EventHandler(this.buttonNextCrew_Click);
             // 
             // buttonPreviousCrew
             // 
@@ -116,6 +119,7 @@
             this.buttonPreviousCrew.TabIndex = 7;
             this.buttonPreviousCrew.Text = "<<";
             this.buttonPreviousCrew.UseVisualStyleBackColor = true;
+            this.buttonPreviousCrew.Click += new System.EventHandler(this.buttonPreviousCrew_Click);
             // 
             // labelPagesCrew
             // 
@@ -166,6 +170,7 @@
             this.comboBoxCount.Name = "comboBoxCount";
             this.comboBoxCount.Size = new System.Drawing.Size(45, 23);
             this.comboBoxCount.TabIndex = 12;
+            this.comboBoxCount.SelectedIndexChanged += new System.EventHandler(this.comboBoxCount_SelectedIndexChanged);
             // 
             // AssignVoyageToCrewFormApp
             // 

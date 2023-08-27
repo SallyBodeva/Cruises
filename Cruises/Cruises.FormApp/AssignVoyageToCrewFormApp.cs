@@ -131,28 +131,109 @@ namespace Cruises.FormApp
             }
         }
 
-        //private void buttonAdd_Click(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int voyage = int.Parse(labelChosenVoyage.Text.Split(" - ").FirstOrDefault());
+                List<int> crew = new List<int>();
+                foreach (var item in listBoxTeam.Items)
+                {
+                    int crewMemberId = int.Parse(item.ToString().Split(" - ").FirstOrDefault());
+                    crew.Add(crewMemberId);
+                }
+                string result = crewService.AddVoayeTeam(voyage, crew);
+                MessageBox.Show(result);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
-        //        int project = int.Parse(labelChosenVoyage.Text.Split(" - ").FirstOrDefault());
-        //        List<int> crew = new List<int>();
-        //        foreach (var item in listBoxTeam.Items)
-        //        {
-        //            int crewMemberId = int.Parse(item.ToString().Split(" - ").FirstOrDefault());
-        //            crew.Add(crewMemberId);
-        //        }
-        //        string result = employeeService.AddProjectTeam(project, employees);
-        //        MessageBox.Show(result);
+        private void buttonPrevousV_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (currentVoyagePage > 1)
+                {
+                    currentVoyagePage--;
+                    labelPagesVoyages.Text = $"{currentVoyagePage} / {totalVoyagePage}";
+                    listBoxVoyages.Items.Clear();
 
+                    List<string> voyages = voyageService.GetVoyagesInfo(currentVoyagePage);
+                    voyages.ForEach(a => listBoxVoyages.Items.Add(a));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
+        private void buttonNetxV_Click(object sender, EventArgs e)
+        {
+            try
+            { 
+                if (currentVoyagePage < totalVoyagePage)
+                {
+                    currentVoyagePage++;
+                    labelPagesVoyages.Text = $"{currentVoyagePage} / {totalVoyagePage}";
+                    listBoxVoyages.Items.Clear();
 
-        //    }
-        //}
+                    List<string> voyages = voyageService.GetVoyagesInfo(currentVoyagePage);
+                    voyages.ForEach(a => listBoxVoyages.Items.Add(a));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonPreviousCrew_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (currentCrewPage > 1)
+                {
+                    currentCrewPage--;
+                    labelPagesCrew.Text = $"{currentCrewPage} / {totalCrewPage}";
+                    listBoxCrew.Items.Clear();
+
+                    List<string> crew = crewService.GetCrewMemberBasicInfo(currentCrewPage);
+                    crew.ForEach(p => listBoxCrew.Items.Add(p));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonNextCrew_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (currentCrewPage < totalCrewPage)
+                {
+                    currentCrewPage++;
+                    labelPagesCrew.Text = $"{currentCrewPage} / {totalCrewPage}";
+                    listBoxCrew.Items.Clear();
+
+                    List<string> crew = crewService.GetCrewMemberBasicInfo(currentCrewPage);
+                    crew.ForEach(p => listBoxCrew.Items.Add(p));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void comboBoxCount_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listBoxTeam.Items.Clear();
+        }
     }
 }

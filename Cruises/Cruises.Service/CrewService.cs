@@ -124,7 +124,7 @@
             {
                 StringBuilder masege = new StringBuilder();
                 masege.AppendLine($"Employee info: ");
-                masege.AppendLine($"\tId: { c.Id}");
+                masege.AppendLine($"\tId: {c.Id}");
                 masege.AppendLine($"\tFirst name: {c.FirstName}");
                 masege.AppendLine($"\tLast name: {c.LastName}");
                 masege.AppendLine($"\tAge: {c.Age}");
@@ -158,52 +158,13 @@
         }
         public CrewMember GetCrewMemberById(int id)
         {
-            using (context= new AppDbContext())
+            using (context = new AppDbContext())
             {
-                CrewMember cm= context.CrewMembers.FirstOrDefault(x => x.Id == id);
+                CrewMember cm = context.CrewMembers.FirstOrDefault(x => x.Id == id);
                 return cm;
             }
         }
 
-        public string AddShipCrew(int shipId, List<int> crewMemberIds)
-        {
-            StringBuilder message = new StringBuilder();
-            using (context = new AppDbContext())
-            {
-                Ship s = context.Ships.Find(shipId);
-                if (s == null)
-                {
-                    message.AppendLine($"{nameof(Ship)} not found!");
-                    return message.ToString().TrimEnd();
-                };
-                List<CrewMember> members = new List<CrewMember>();
-                foreach (var id in crewMemberIds)
-                {
-                    CrewMember cm = context.CrewMembers.Find(id);
-                    if (cm != null)
-                    {
-                        members.Add(cm);
-                    }
-                }
-                if (members.Count == 0)
-                {
-                    message.AppendLine($"{nameof(CrewMember)}s not found!");
-                    return message.ToString().TrimEnd();
-                }
-                message.AppendLine($"{shipId} {s.Name} {s.Model} cabin crew: ");
-                foreach (var member in members)
-                {
-                    context.ShipCrewMembers.Add(new ShipCrewMember
-                    {
-                        Ship = s,
-                        CrewMember = member
-                    });
-                    message.AppendLine($"\t{member.FirstName} {member.LastName}");
-                }
-                context.SaveChanges();
-                return message.ToString().TrimEnd();
-            }
-        }
         public List<string> GetCrewInfo()
         {
             using (context = new AppDbContext())
@@ -212,44 +173,44 @@
                 return list;
             }
         }
-        //public string AddVoayeTeam(int voyageId, List<int> teamId)
-        //{
-        //    StringBuilder message = new StringBuilder();
-        //    using (context = new AppDbContext())
-        //    {
-        //        Voyage v = context.Voyages.Find(voyageId);
-        //        if (v == null)
-        //        {
-        //            message.AppendLine($"{nameof(Voyage)} not found!");
-        //            return message.ToString().TrimEnd();
-        //        }
-        //        List<CrewMember> crew = new List<CrewMember>();
-        //        foreach (var id in teamId)
-        //        {
-        //            CrewMember cM = context.CrewMembers.Find(id);
-        //            if (cM != null)
-        //            {
-        //                crew.Add(cM);
-        //            }
-        //        }
-        //        if (crew.Count == 0)
-        //        {
-        //            message.AppendLine($"{nameof(CrewMember)}s not found!");
-        //            return message.ToString().TrimEnd();
-        //        }
-        //        message.AppendLine($"{voyageId} {v.Name} team: ");
-              // foreach (var crewMember in crew)
-              // {
-              //     context.ProjectEmployees.Add(new ProjectEmployee
-              //     {
-              //         Project = project,
-              //         Employee = employee
-              //     });
-              //     message.AppendLine($"\t{employee.FirstName} {employee.LastName}");
-              // }
-              // context.SaveChanges();
-              // return message.ToString().TrimEnd();
-        //    }
-        //}
+        public string AddVoayeTeam(int voyageId, List<int> teamId)
+        {
+            StringBuilder message = new StringBuilder();
+            using (context = new AppDbContext())
+            {
+                Voyage v = context.Voyages.Find(voyageId);
+                if (v == null)
+                {
+                    message.AppendLine($"{nameof(Voyage)} not found!");
+                    return message.ToString().TrimEnd();
+                }
+                List<CrewMember> crew = new List<CrewMember>();
+                foreach (var id in teamId)
+                {
+                    CrewMember cM = context.CrewMembers.Find(id);
+                    if (cM != null)
+                    {
+                        crew.Add(cM);
+                    }
+                }
+                if (crew.Count == 0)
+                {
+                    message.AppendLine($"{nameof(CrewMember)}s not found!");
+                    return message.ToString().TrimEnd();
+                }
+                message.AppendLine($"{voyageId} {v.Name} team: ");
+                foreach (var crewMember in crew)
+                {
+                    context.VoyageCrewMembers.Add(new VoyageCrewMember
+                    {
+                        Voyage = v,
+                        CrewMember = crewMember
+                    });
+                    message.AppendLine($"\t{crewMember.FirstName} {crewMember.LastName}");
+                }
+                context.SaveChanges();
+                return message.ToString().TrimEnd();
+            }
+        }
     }
 }

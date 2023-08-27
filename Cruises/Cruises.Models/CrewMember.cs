@@ -21,6 +21,6 @@ namespace Cruises.Models
         [MaxLength(100)]
         public string Position { get; set; }
 
-        public virtual ICollection<ShipCrewMember> ShipCrewMembers { get; set; } = new List<ShipCrewMember>();
+        public virtual ICollection<VoyageCrewMember> VoyageCrewMembers { get; set; } = new List<VoyageCrewMember>();
     }
 }

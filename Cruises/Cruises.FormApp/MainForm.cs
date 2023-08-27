@@ -46,5 +46,11 @@ namespace Cruises.FormApp
             VIPVoyagesFormApp vFA = new VIPVoyagesFormApp();
             vFA.ShowDialog();
         }
+
+        private void buttonAssign_Click(object sender, EventArgs e)
+        {
+            AssignVoyageToCrewFormApp aFA = new AssignVoyageToCrewFormApp();
+            aFA.ShowDialog();
+        }
     }
 }

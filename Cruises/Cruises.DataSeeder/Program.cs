@@ -157,7 +157,7 @@ namespace Cruises.DataSeeder
                 int pInxed = random.Next(0, price.Count);
                 if (fHName != tHName)
                 {
-                    string voyageName = $"{fHName}-{tHName}";
+                    string voyageName = $"{fHName} - {tHName}";
                     Console.WriteLine(vS.CreateVoyage(voyageName,fHName, tHName, durations[dInxed], shipsName[ship], price[pInxed]));
                 }
                 else

@@ -277,5 +277,20 @@
                 return list;
             }
         }
+        public List<string> GetVoyagesInfo(int page = 1, int count = 10)
+        {
+            List<string> voyages = null;
+            using (context = new AppDbContext())
+            {
+
+                voyages = context.Voyages
+                    .Where(x => !x.VoyageCrewMembers.Any())
+                    .Skip((page - 1) * count)
+                    .Take(count)
+                    .Select(x => $"{x.Id} - {x.Name}")
+                    .ToList();
+            }
+            return voyages;
+        }
     }
 }

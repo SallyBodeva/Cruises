@@ -20,5 +20,7 @@
 
         public decimal TicketPrice { get; set; }
         public virtual ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
+
+        public virtual ICollection<VoyageCrewMember> VoyageCrewMembers { get; set; } = new List<VoyageCrewMember>();
     }
 }

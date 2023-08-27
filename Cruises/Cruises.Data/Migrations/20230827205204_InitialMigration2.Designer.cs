@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cruises.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230823073539_InitialMigration1")]
-    partial class InitialMigration1
+    [Migration("20230827205204_InitialMigration2")]
+    partial class InitialMigration2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -198,21 +198,6 @@ namespace Cruises.Data.Migrations
                     b.ToTable("Ships");
                 });
 
-            modelBuilder.Entity("Cruises.Models.ShipCrewMember", b =>
-                {
-                    b.Property<int>("ShipId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CrewMemberId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ShipId", "CrewMemberId");
-
-                    b.HasIndex("CrewMemberId");
-
-                    b.ToTable("ShipCrewMembers");
-                });
-
             modelBuilder.Entity("Cruises.Models.ShipType", b =>
                 {
                     b.Property<int>("Id")
@@ -269,6 +254,21 @@ namespace Cruises.Data.Migrations
                     b.ToTable("Voyages");
                 });
 
+            modelBuilder.Entity("Cruises.Models.VoyageCrewMember", b =>
+                {
+                    b.Property<int>("VoyageId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CrewMemberId")
+                        .HasColumnType("int");
+
+                    b.HasKey("VoyageId", "CrewMemberId");
+
+                    b.HasIndex("CrewMemberId");
+
+                    b.ToTable("VoyageCrewMembers");
+                });
+
             modelBuilder.Entity("Cruises.Models.Harbour", b =>
                 {
                     b.HasOne("Cruises.Models.City", "City")
@@ -302,21 +302,6 @@ namespace Cruises.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Cruises.Models.ShipCrewMember", b =>
-                {
-                    b.HasOne("Cruises.Models.CrewMember", "CrewMember")
-                        .WithMany("ShipCrewMembers")
-                        .HasForeignKey("CrewMemberId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Cruises.Models.Ship", "Ship")
-                        .WithMany("ShipCrewMembers")
-                        .HasForeignKey("ShipId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Cruises.Models.Voyage", b =>
                 {
                     b.HasOne("Cruises.Models.Harbour", "DestinationHarbour")
@@ -334,6 +319,21 @@ namespace Cruises.Data.Migrations
                     b.HasOne("Cruises.Models.Ship", "Ship")
                         .WithMany()
                         .HasForeignKey("ShipId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Cruises.Models.VoyageCrewMember", b =>
+                {
+                    b.HasOne("Cruises.Models.CrewMember", "CrewMember")
+                        .WithMany("VoyageCrewMembers")
+                        .HasForeignKey("CrewMemberId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Cruises.Models.Voyage", "Voyage")
+                        .WithMany("VoyageCrewMembers")
+                        .HasForeignKey("VoyageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

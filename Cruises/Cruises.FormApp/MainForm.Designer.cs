@@ -34,6 +34,7 @@
             this.buttonResevation = new System.Windows.Forms.Button();
             this.buttonShipsCatalog = new System.Windows.Forms.Button();
             this.buttonVIP = new System.Windows.Forms.Button();
+            this.buttonAssign = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // WelcomeLabel
@@ -96,11 +97,22 @@
             this.buttonVIP.UseVisualStyleBackColor = true;
             this.buttonVIP.Click += new System.EventHandler(this.buttonVIP_Click);
             // 
+            // buttonAssign
+            // 
+            this.buttonAssign.Location = new System.Drawing.Point(225, 221);
+            this.buttonAssign.Name = "buttonAssign";
+            this.buttonAssign.Size = new System.Drawing.Size(120, 73);
+            this.buttonAssign.TabIndex = 6;
+            this.buttonAssign.Text = "Assign voyage to the crew";
+            this.buttonAssign.UseVisualStyleBackColor = true;
+            this.buttonAssign.Click += new System.EventHandler(this.buttonAssign_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonAssign);
             this.Controls.Add(this.buttonVIP);
             this.Controls.Add(this.buttonShipsCatalog);
             this.Controls.Add(this.buttonResevation);
@@ -122,5 +134,6 @@
         private System.Windows.Forms.Button buttonResevation;
         private System.Windows.Forms.Button buttonShipsCatalog;
         private System.Windows.Forms.Button buttonVIP;
+        private System.Windows.Forms.Button buttonAssign;
     }
 }

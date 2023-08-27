@@ -9,16 +9,17 @@ namespace Cruises.Data
 {
     public class AppDbContext:DbContext
     {
-        private const string connectionString= @"Server=DESKTOP-0FTTVGR; Initial Catalog=Cruises; Integrated Security=true; Trusted_Connection =true";
+        private const string connectionString= @"Server=DESKTOP-0FTTVGR; Initial Catalog=CruisesDataBase; Integrated Security=true; Trusted_Connection =true";
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<CrewMember> CrewMembers { get; set; }
         public virtual DbSet<Harbour> Harbours { get; set; }
         public virtual DbSet<Passenger> Passengers { get; set; }
         public virtual DbSet<Reservation> Reservations { get; set; }
         public virtual DbSet<Ship> Ships { get; set; }
-        public virtual DbSet<ShipCrewMember> ShipCrewMembers { get; set; }
+        public virtual DbSet<VoyageCrewMember> VoyageCrewMembers { get; set; }
         public virtual DbSet<ShipType> ShipTypes { get; set; }
         public virtual DbSet<Voyage> Voyages { get; set; }
+       
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -31,9 +32,9 @@ namespace Cruises.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<ShipCrewMember>(option =>
+            modelBuilder.Entity<VoyageCrewMember>(option =>
             {
-                option.HasKey(x => new { x.ShipId, x.CrewMemberId });
+                option.HasKey(x => new { x.VoyageId, x.CrewMemberId });
             });
 
 
@@ -64,7 +65,7 @@ namespace Cruises.Data
                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<CrewMember>()
-                .HasMany(scm => scm.ShipCrewMembers)
+                .HasMany(vcm => vcm.VoyageCrewMembers)
                 .WithOne(s => s.CrewMember)
                 .HasForeignKey(s => s.CrewMemberId)
                 .OnDelete(DeleteBehavior.Restrict);

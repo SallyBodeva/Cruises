@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Cruises.Data.Migrations
 {
-    public partial class InitialMigration1 : Migration
+    public partial class InitialMigration2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -113,30 +113,6 @@ namespace Cruises.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ShipCrewMembers",
-                columns: table => new
-                {
-                    ShipId = table.Column<int>(nullable: false),
-                    CrewMemberId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ShipCrewMembers", x => new { x.ShipId, x.CrewMemberId });
-                    table.ForeignKey(
-                        name: "FK_ShipCrewMembers_CrewMembers_CrewMemberId",
-                        column: x => x.CrewMemberId,
-                        principalTable: "CrewMembers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_ShipCrewMembers_Ships_ShipId",
-                        column: x => x.ShipId,
-                        principalTable: "Ships",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Voyages",
                 columns: table => new
                 {
@@ -197,6 +173,30 @@ namespace Cruises.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "VoyageCrewMembers",
+                columns: table => new
+                {
+                    VoyageId = table.Column<int>(nullable: false),
+                    CrewMemberId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VoyageCrewMembers", x => new { x.VoyageId, x.CrewMemberId });
+                    table.ForeignKey(
+                        name: "FK_VoyageCrewMembers_CrewMembers_CrewMemberId",
+                        column: x => x.CrewMemberId,
+                        principalTable: "CrewMembers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_VoyageCrewMembers_Voyages_VoyageId",
+                        column: x => x.VoyageId,
+                        principalTable: "Voyages",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Harbours_CityId",
                 table: "Harbours",
@@ -225,11 +225,6 @@ namespace Cruises.Data.Migrations
                 column: "VoyageId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ShipCrewMembers_CrewMemberId",
-                table: "ShipCrewMembers",
-                column: "CrewMemberId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Ships_Name",
                 table: "Ships",
                 column: "Name",
@@ -245,6 +240,11 @@ namespace Cruises.Data.Migrations
                 table: "ShipTypes",
                 column: "Name",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_VoyageCrewMembers_CrewMemberId",
+                table: "VoyageCrewMembers",
+                column: "CrewMemberId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Voyages_DestinationHarbourId",
@@ -268,16 +268,16 @@ namespace Cruises.Data.Migrations
                 name: "Reservations");
 
             migrationBuilder.DropTable(
-                name: "ShipCrewMembers");
+                name: "VoyageCrewMembers");
 
             migrationBuilder.DropTable(
                 name: "Passengers");
 
             migrationBuilder.DropTable(
-                name: "Voyages");
+                name: "CrewMembers");
 
             migrationBuilder.DropTable(
-                name: "CrewMembers");
+                name: "Voyages");
 
             migrationBuilder.DropTable(
                 name: "Harbours");
