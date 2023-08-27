@@ -212,5 +212,44 @@
                 return list;
             }
         }
+        //public string AddVoayeTeam(int voyageId, List<int> teamId)
+        //{
+        //    StringBuilder message = new StringBuilder();
+        //    using (context = new AppDbContext())
+        //    {
+        //        Voyage v = context.Voyages.Find(voyageId);
+        //        if (v == null)
+        //        {
+        //            message.AppendLine($"{nameof(Voyage)} not found!");
+        //            return message.ToString().TrimEnd();
+        //        }
+        //        List<CrewMember> crew = new List<CrewMember>();
+        //        foreach (var id in teamId)
+        //        {
+        //            CrewMember cM = context.CrewMembers.Find(id);
+        //            if (cM != null)
+        //            {
+        //                crew.Add(cM);
+        //            }
+        //        }
+        //        if (crew.Count == 0)
+        //        {
+        //            message.AppendLine($"{nameof(CrewMember)}s not found!");
+        //            return message.ToString().TrimEnd();
+        //        }
+        //        message.AppendLine($"{voyageId} {v.Name} team: ");
+              // foreach (var crewMember in crew)
+              // {
+              //     context.ProjectEmployees.Add(new ProjectEmployee
+              //     {
+              //         Project = project,
+              //         Employee = employee
+              //     });
+              //     message.AppendLine($"\t{employee.FirstName} {employee.LastName}");
+              // }
+              // context.SaveChanges();
+              // return message.ToString().TrimEnd();
+        //    }
+        //}
     }
 }
