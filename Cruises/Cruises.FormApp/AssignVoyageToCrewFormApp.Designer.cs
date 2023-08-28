@@ -85,7 +85,7 @@
             // labelSteps
             // 
             this.labelSteps.AutoSize = true;
-            this.labelSteps.Location = new System.Drawing.Point(356, 30);
+            this.labelSteps.Location = new System.Drawing.Point(380, 22);
             this.labelSteps.Name = "labelSteps";
             this.labelSteps.Size = new System.Drawing.Size(38, 15);
             this.labelSteps.TabIndex = 4;

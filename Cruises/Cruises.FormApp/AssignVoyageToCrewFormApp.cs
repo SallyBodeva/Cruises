@@ -52,7 +52,7 @@ namespace Cruises.FormApp
                 buttonPrevousV.Enabled = true;
                 buttonNetxV.Enabled = true;
 
-                totalCrewPage = crewService.GetCrewPagesCount(10);
+                totalCrewPage = crewService.GetCrewPagesCount();
                 labelPagesCrew.Text = $"{currentCrewPage} / {totalCrewPage}";
                 buttonPreviousCrew.Enabled = false;
                 buttonNextCrew.Enabled = false;
@@ -82,7 +82,7 @@ namespace Cruises.FormApp
                 listBoxVoyages.Enabled = false;
                 labelSteps.Text = "Step 2 - select crew members";
 
-                labelPagesVoyages.Text = listBoxVoyages.Text;
+                labelChosenVoyage.Text = listBoxVoyages.Text;
                 buttonPrevousV.Enabled = false;
                 buttonNetxV.Enabled = false;
 
@@ -149,6 +149,7 @@ namespace Cruises.FormApp
             {
                 MessageBox.Show(ex.Message);
             }
+            this.AssignVoyageToCrewFormApp_Load(sender, e);
         }
 
         private void buttonPrevousV_Click(object sender, EventArgs e)
