@@ -1,4 +1,4 @@
-﻿namespace Cruises.ViewModels
+﻿namespace Cruises.ViewModels.Voyages
 {
     public class VoyageIndexViewModel
     {

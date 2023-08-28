@@ -1,17 +1,17 @@
 ﻿using Cruises.Service;
-using Cruises.ViewModels;
 using Cruises.ViewModels.Voyages;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Cruises.WebApp.Controllers
 {
     public class VoyageController : Controller
     {
-        private VoyageService voyageService;
+        private readonly VoyageService voyageService;
         public VoyageController()
         {
-            voyageService = new VoyageService();
+            this.voyageService = new VoyageService();
         }
         public IActionResult Index(int page =1)
         {
