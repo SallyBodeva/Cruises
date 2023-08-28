@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Cruises.Data\Cruises.Data.csproj" />
     <ProjectReference Include="..\Cruises.Models\Cruises.Models.csproj" />
+    <ProjectReference Include="..\Cruises.ViewModels\Cruises.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>
