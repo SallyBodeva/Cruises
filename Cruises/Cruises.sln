@@ -15,10 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cruises.DataSeeder", "Cruis
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cruises.FormApp", "Cruises.FormApp\Cruises.FormApp.csproj", "{2431AE4F-D5E6-48A6-8A5F-F9B5E83FE4D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cruises.ViewModels", "Cruises.ViewModels\Cruises.ViewModels.csproj", "{D2D25071-5F26-4A27-B39B-E98FB3C4BE29}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cruises.WebApplication", "Cruises.WebApplication\Cruises.WebApplication.csproj", "{C1F1E7B8-A4F6-41B2-B1E6-CD0E9D26BB6D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,14 +45,6 @@ Global
 		{2431AE4F-D5E6-48A6-8A5F-F9B5E83FE4D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2431AE4F-D5E6-48A6-8A5F-F9B5E83FE4D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2431AE4F-D5E6-48A6-8A5F-F9B5E83FE4D7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D2D25071-5F26-4A27-B39B-E98FB3C4BE29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D2D25071-5F26-4A27-B39B-E98FB3C4BE29}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D2D25071-5F26-4A27-B39B-E98FB3C4BE29}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D2D25071-5F26-4A27-B39B-E98FB3C4BE29}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C1F1E7B8-A4F6-41B2-B1E6-CD0E9D26BB6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C1F1E7B8-A4F6-41B2-B1E6-CD0E9D26BB6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C1F1E7B8-A4F6-41B2-B1E6-CD0E9D26BB6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C1F1E7B8-A4F6-41B2-B1E6-CD0E9D26BB6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
