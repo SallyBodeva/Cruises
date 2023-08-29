@@ -1,0 +1,26 @@
+﻿@model List<Cruises.ViewModels.Voyages.VoyageIndexViewModel>
+
+
+<div class="jumbotron">
+    <h2 class="display-4">Most expensive voyages</h2>
+    <hr />
+    <div class="container">
+        <div class="row mx-auto ">
+            @foreach (var item in Model)
+            {
+                <div class="card mx-auto my-1" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Name</h5>
+                        <p class="card-text">Start harbour: @item.StartHarbour</p>
+                        <p class="card-text">Destination harbour: @item.DestinationHarbour</p>
+                        <p class="card-text">Duration: @item.Duration</p>
+                        <p class="card-text">Ship: @item.Ship</p>
+                        <p class="card-text">Price: @item.TicketPrice</p>
+                        <img class="img-thumbnail" src="@item.ImageUrl" />
+                        @*<a href="#" class="btn btn-primary">Go somewhere</a>*@
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

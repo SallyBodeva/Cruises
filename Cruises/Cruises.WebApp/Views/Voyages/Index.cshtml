@@ -1,0 +1,35 @@
+﻿@model Cruises.ViewModels.Voyages.VoyagesIndexViewModel
+
+<h1>Voyages page</h1>
+
+
+<table class="table table-bordered table-hover">
+    <thead class="thead-light">
+        <tr>
+            <th>Name</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Duration</th>
+            <th>Ship</th>
+            <th>Price</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model.Voyages)
+        {
+            <tr>
+                <td>@p.Name</td>
+                <td>@p.StartHarbour</td>
+                <td>@p.DestinationHarbour</td>
+                <td>@p.Duration</td>
+                <td>@p.Ship</td>
+                <td>@p.TicketPrice</td>
+                <td><img src="@p.ImageUrl" width="300px" height="150px" /></td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+    </tfoot>
+</table>
+<partial name="_PagingPartial" />

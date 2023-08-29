@@ -2,6 +2,7 @@
 {
     using Cruises.Data;
     using Cruises.Models;
+    using Cruises.ViewModels.Voyages;
     using System;
     using System.Collections.Generic;
     using System.Dynamic;
@@ -293,6 +294,65 @@
             return voyages;
         }
         // --------------------------------Methoods needed for the web app-------------------------------------
-       
+        public VoyagesIndexViewModel GetVoyages(VoyagesIndexViewModel model)
+        {
+            using (context = new AppDbContext())
+            {
+                model.Voyages = context.Voyages
+                    .Skip((model.PageNumber - 1) * model.ItemsPerPage)
+                    .Take(model.ItemsPerPage)
+                    .Select(x => new VoyageIndexViewModel()
+                    {
+                        Id = x.Id,
+                        Name = x.Name,
+                        StartHarbour = $"{x.Harbour.Name} {x.Harbour.City.Name} {x.Harbour.City.Country}",
+                        DestinationHarbour = $"{x.DestinationHarbour.Name} {x.DestinationHarbour.City.Name} {x.DestinationHarbour.City.Country}",
+                        Duration = x.Duration.ToString(),
+                        Ship = x.Ship.Name,
+                        TicketPrice = x.TicketPrice.ToString()
+                    })
+                    .ToList();
+
+                model.ElementsCount = context.Voyages.Count();
+
+                return model;
+            }
+        }
+        public List<VoyageIndexViewModel> GetCheapestVoyages()
+        {
+            using (context = new AppDbContext())
+            {
+                return context.Voyages.OrderBy(x => x.TicketPrice)
+               .Take(9)
+               .Select(x => new VoyageIndexViewModel()
+               {
+                   Id = x.Id,
+                   StartHarbour = $"{x.Harbour.Name} {x.Harbour.City.Name} {x.Harbour.City.Country}",
+                   DestinationHarbour = $"{x.DestinationHarbour.Name} {x.DestinationHarbour.City.Name} {x.DestinationHarbour.City.Country}",
+                   Duration = x.Duration.ToString(),
+                   Ship = x.Ship.Name,
+                   TicketPrice = x.TicketPrice.ToString()
+               })
+               .ToList();
+            }
+        }
+        public List<VoyageIndexViewModel> GetMostExpensiveVoyages()
+        {
+            using (context = new AppDbContext())
+            {
+                return context.Voyages.OrderByDescending(x => x.TicketPrice)
+               .Take(9)
+               .Select(x => new VoyageIndexViewModel()
+               {
+                   Id = x.Id,
+                   StartHarbour = $"{x.Harbour.Name} {x.Harbour.City.Name} {x.Harbour.City.Country}",
+                   DestinationHarbour = $"{x.DestinationHarbour.Name} {x.DestinationHarbour.City.Name} {x.DestinationHarbour.City.Country}",
+                   Duration = x.Duration.ToString(),
+                   Ship = x.Ship.Name,
+                   TicketPrice = x.TicketPrice.ToString()
+               })
+               .ToList();
+            }
+        }
     }
 }
