@@ -69,6 +69,8 @@
             // 
             // listBoxCrew
             // 
+            this.listBoxCrew.BackColor = System.Drawing.Color.Lavender;
+            this.listBoxCrew.ForeColor = System.Drawing.Color.MidnightBlue;
             this.listBoxCrew.FormattingEnabled = true;
             this.listBoxCrew.ItemHeight = 15;
             this.listBoxCrew.Location = new System.Drawing.Point(466, 21);
@@ -123,12 +125,13 @@
             // 
             // buttonHire
             // 
+            this.buttonHire.BackColor = System.Drawing.Color.MediumSlateBlue;
             this.buttonHire.Location = new System.Drawing.Point(153, 113);
             this.buttonHire.Name = "buttonHire";
             this.buttonHire.Size = new System.Drawing.Size(75, 23);
             this.buttonHire.TabIndex = 9;
             this.buttonHire.Text = "Hire";
-            this.buttonHire.UseVisualStyleBackColor = true;
+            this.buttonHire.UseVisualStyleBackColor = false;
             this.buttonHire.Click += new System.EventHandler(this.buttonHire_Click);
             // 
             // textBoxPosition
@@ -197,12 +200,13 @@
             // 
             // buttonFire
             // 
+            this.buttonFire.BackColor = System.Drawing.Color.SlateBlue;
             this.buttonFire.Location = new System.Drawing.Point(126, 68);
             this.buttonFire.Name = "buttonFire";
             this.buttonFire.Size = new System.Drawing.Size(110, 23);
             this.buttonFire.TabIndex = 10;
             this.buttonFire.Text = "Fire";
-            this.buttonFire.UseVisualStyleBackColor = true;
+            this.buttonFire.UseVisualStyleBackColor = false;
             this.buttonFire.Click += new System.EventHandler(this.buttonFire_Click);
             // 
             // textBoxIdFire
@@ -223,12 +227,13 @@
             // 
             // buttonUpdate
             // 
+            this.buttonUpdate.BackColor = System.Drawing.Color.SlateBlue;
             this.buttonUpdate.Location = new System.Drawing.Point(130, 81);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(133, 23);
             this.buttonUpdate.TabIndex = 11;
             this.buttonUpdate.Text = "Update";
-            this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.UseVisualStyleBackColor = false;
             this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // textBoxNewRating
@@ -265,22 +270,24 @@
             // 
             // buttonPrevious
             // 
+            this.buttonPrevious.BackColor = System.Drawing.Color.SlateBlue;
             this.buttonPrevious.Location = new System.Drawing.Point(529, 360);
             this.buttonPrevious.Name = "buttonPrevious";
             this.buttonPrevious.Size = new System.Drawing.Size(82, 43);
             this.buttonPrevious.TabIndex = 14;
             this.buttonPrevious.Text = "Previous   page";
-            this.buttonPrevious.UseVisualStyleBackColor = true;
+            this.buttonPrevious.UseVisualStyleBackColor = false;
             this.buttonPrevious.Click += new System.EventHandler(this.buttonPrevious_Click);
             // 
             // buttonNext
             // 
+            this.buttonNext.BackColor = System.Drawing.Color.SlateBlue;
             this.buttonNext.Location = new System.Drawing.Point(636, 360);
             this.buttonNext.Name = "buttonNext";
             this.buttonNext.Size = new System.Drawing.Size(76, 43);
             this.buttonNext.TabIndex = 15;
             this.buttonNext.Text = "Next page";
-            this.buttonNext.UseVisualStyleBackColor = true;
+            this.buttonNext.UseVisualStyleBackColor = false;
             this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
             // 
             // groupHire
@@ -388,6 +395,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(800, 491);
             this.Controls.Add(this.labelPageNum);
             this.Controls.Add(this.groupBox3);
@@ -398,6 +406,7 @@
             this.Controls.Add(this.buttonPrevious);
             this.Controls.Add(this.chooseLabel);
             this.Controls.Add(this.listBoxCrew);
+            this.ForeColor = System.Drawing.SystemColors.WindowText;
             this.Name = "CrewFormApp";
             this.Text = "CrewFormApp";
             this.Load += new System.EventHandler(this.CrewFormApp_Load);

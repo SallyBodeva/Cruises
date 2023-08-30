@@ -30,6 +30,7 @@ namespace Cruises.FormApp
 
         private void VoyagesCatalogFormApp_Load(object sender, EventArgs e)
         {
+            pictureBox4.SendToBack();
             voyages = vService.GetVoyages();
             Voyage v = voyages.First();
             voyageId = v.Id;
@@ -73,5 +74,6 @@ namespace Cruises.FormApp
             DataFill();
         }
 
+       
     }
 }
