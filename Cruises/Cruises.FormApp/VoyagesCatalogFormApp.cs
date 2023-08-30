@@ -18,6 +18,7 @@ namespace Cruises.FormApp
         private HarbourService hService;
         private ShipService sService;
         private int voyageId;
+        private int voyageIindex;
         private static List<Voyage> voyages;
         public VoyagesCatalogFormApp()
         {
@@ -30,48 +31,82 @@ namespace Cruises.FormApp
 
         private void VoyagesCatalogFormApp_Load(object sender, EventArgs e)
         {
-            pictureBox4.SendToBack();
-            voyages = vService.GetVoyages();
-            Voyage v = voyages.First();
-            voyageId = v.Id;
-            DataFill();
+            try
+            {
+                pictureBox4.SendToBack();
+                voyages = vService.GetVoyages();
+                voyageId = voyages[0].Id ;
+                DataFill();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
         }
 
         private void DataFill()
         {
-            textBoxName.Text = vService.GetVoyageNameById(voyageId);
-            pictureBox1.Load(sService.GetShipImageById(voyageId));
-            textBoxFromHName.Text = vService.GetVoyageHarboursNameById(voyageId);
-            textBoxFromCity.Text = hService.GetHarbourCityNameByVoyageId(voyageId);
-            textBoxToHNmae.Text = vService.GetVoyageDestHarboursNameById(voyageId);
-            textBoxToCity.Text = hService.GetDesHarbourCityNameByVoyageId(voyageId);
-            textBoxDuration.Text = vService.GetVoyageDurationById(voyageId).ToString();
-            textBoxShipName.Text = vService.GetVoyageShupNameById(voyageId);
-            textBoxTicketPrice.Text = vService.GetVoyageTicketPriceById(voyageId).ToString();
-            textBoxFromCountry.Text = hService.GetHarbourCountryNameByVoyageId(voyageId);
-            textBoxToCountry.Text = hService.GetDesHarbourCountryNameByVoyageId(voyageId);
+            try
+            {
+                textBoxName.Text = vService.GetVoyageNameById(voyageId);
+                pictureBox1.Load(sService.GetShipImageById(voyageId));
+                textBoxFromHName.Text = vService.GetVoyageHarboursNameById(voyageId);
+                textBoxFromCity.Text = hService.GetHarbourCityNameByVoyageId(voyageId);
+                textBoxToHNmae.Text = vService.GetVoyageDestHarboursNameById(voyageId);
+                textBoxToCity.Text = hService.GetDesHarbourCityNameByVoyageId(voyageId);
+                textBoxDuration.Text = vService.GetVoyageDurationById(voyageId).ToString();
+                textBoxShipName.Text = vService.GetVoyageShupNameById(voyageId);
+                textBoxTicketPrice.Text = vService.GetVoyageTicketPriceById(voyageId).ToString();
+                textBoxFromCountry.Text = hService.GetHarbourCountryNameByVoyageId(voyageId);
+                textBoxToCountry.Text = hService.GetDesHarbourCountryNameByVoyageId(voyageId);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
         }
 
         private void buttonPrevious_Click(object sender, EventArgs e)
         {
-            voyages = vService.GetVoyages();
-            Voyage v = voyages.First();
-            if (voyageId!=v.Id)
+            try
             {
-                voyageId--;
+                voyages = vService.GetVoyages();
+                Voyage v = voyages[0];
+                if (voyageId != v.Id)
+                {
+                    voyageIindex--;
+                    voyageId = voyages[voyageIindex].Id;
+                }
+                DataFill();
             }
-            DataFill();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+         
         }
 
         private void buttonNetx_Click(object sender, EventArgs e)
         {
-            voyages = vService.GetVoyages();
-            Voyage v = voyages.Last();
-            if (voyageId != v.Id)
+            try
             {
-                voyageId++;
+                voyages = vService.GetVoyages();
+                Voyage v = voyages[voyages.Count-1];
+                if (voyageId != v.Id)
+                {
+                    voyageIindex++;
+                    voyageId=voyages[voyageIindex].Id;
+                }
+                DataFill();
             }
-            DataFill();
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+           
         }
 
        

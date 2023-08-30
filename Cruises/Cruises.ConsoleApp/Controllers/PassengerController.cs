@@ -87,33 +87,41 @@
         }
         public void AddNewPassenger()
         {
-            Console.Write($"> Enter first name: ");
-            string firstName = Console.ReadLine();
-            Console.Write($"> Enter last name: ");
-            string lastName = Console.ReadLine();
-            Console.Write($"> Enter age: ");
-            int age = int.Parse(Console.ReadLine());
-            Console.Write($"> Enter phone number(it has to be 10 digits only): ");
-            string number = Console.ReadLine();
-            if (number.Count() != 10)
+            try
             {
-                Console.WriteLine("Invalid phone number!");
+                Console.Write($"> Enter first name: ");
+                string firstName = Console.ReadLine();
+                Console.Write($"> Enter last name: ");
+                string lastName = Console.ReadLine();
+                Console.Write($"> Enter age: ");
+                int age = int.Parse(Console.ReadLine());
+                Console.Write($"> Enter phone number(it has to be 10 digits only): ");
+                string number = Console.ReadLine();
+                if (number.Count() != 10)
+                {
+                    Console.WriteLine("Invalid phone number!");
+                    WaitPressKey();
+                    return;
+                }
+                Console.Write($"> Enter info if the passenger is student (Enter 1 for yes and 0 for no): ");
+                string student = Console.ReadLine();
+                Console.Write($"> Enter info if the passenger is retiree (Enter 1 for yes and 0 for no): ");
+                string retiree = Console.ReadLine();
+                bool isStudent;
+                if (student == "1") { isStudent = true; }
+                else { isStudent = false; }
+                bool isRetiree;
+                if (retiree == "1") { isRetiree = true; }
+                else { isRetiree = false; }
+                string result = passengerService.AddPassenger(firstName, lastName, number, age, isStudent, isRetiree);
+                Console.WriteLine(result);
                 WaitPressKey();
-                return;
             }
-            Console.Write($"> Enter info if the passenger is student (Enter 1 for yes and 0 for no): ");
-            string student = Console.ReadLine();
-            Console.Write($"> Enter info if the passenger is retiree (Enter 1 for yes and 0 for no): ");
-            string retiree = Console.ReadLine();
-            bool isStudent;
-            if (student == "1") { isStudent = true; }
-            else { isStudent = false; }
-            bool isRetiree;
-            if (retiree == "1") { isRetiree = true; }
-            else { isRetiree = false; }
-            string result = passengerService.AddPassenger(firstName, lastName, number, age, isStudent, isRetiree);
-            Console.WriteLine(result);
-            WaitPressKey();
+            catch (Exception ex )
+            {
+                Console.WriteLine(ex.Message);
+            }
+
         }
         public void GetExactPassengerInfo()
         {

@@ -29,13 +29,21 @@ namespace Cruises.FormApp
 
         private void CrewFormApp_Load(object sender, EventArgs e)
         {
-            List<string> crewMembers = cService.GetCrewMemberBasicInfo();
-            crewMembers.ForEach(x => listBoxCrew.Items.Add(x));
-            groupHire.Enabled = false;
-            groupBox2.Enabled = false;
-            groupBox3.Enabled = false;
-            totalPages = cService.GetCrewPagesCount(itemsPerPage);
-            labelPageNum.Text = $"{currentPage} / {totalPages}";
+            try
+            {
+                List<string> crewMembers = cService.GetCrewMemberBasicInfo();
+                crewMembers.ForEach(x => listBoxCrew.Items.Add(x));
+                groupHire.Enabled = false;
+                groupBox2.Enabled = false;
+                groupBox3.Enabled = false;
+                totalPages = cService.GetCrewPagesCount(itemsPerPage);
+                labelPageNum.Text = $"{currentPage} / {totalPages}";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
         }
 
         private void buttonHire_Click(object sender, EventArgs e)
@@ -70,11 +78,17 @@ namespace Cruises.FormApp
 
         private void buttonFire_Click(object sender, EventArgs e)
         {
-            currentCrewMemberIndex = int.Parse(textBoxIdFire.Text);
-            CrewMember cm = cService.GetCrewMemberById(currentCrewMemberIndex);
-            string result = cService.DeleteCrewMemberById(currentCrewMemberIndex);
-            MessageBox.Show(result);
-
+            try
+            {
+                currentCrewMemberIndex = int.Parse(textBoxIdFire.Text);
+                CrewMember cm = cService.GetCrewMemberById(currentCrewMemberIndex);
+                string result = cService.DeleteCrewMemberById(currentCrewMemberIndex);
+                MessageBox.Show(result);
+            }
+            catch (Exception )
+            {
+                MessageBox.Show($"Crew member cannot be fired due to his still remainnig voyages...");
+            }
             textBoxIdFire.Text = string.Empty;
             textBoxFNFire.Text = string.Empty;
             textBoxLNFire.Text = string.Empty;
@@ -103,34 +117,48 @@ namespace Cruises.FormApp
 
         private void listBoxCrew_DoubleClick(object sender, EventArgs e)
         {
-            string memberInfo = listBoxCrew.Text;
-            currentCrewMemberIndex = int.Parse(memberInfo.Split(" ").First());
-            CrewMember cm = cService.GetCrewMemberById(currentCrewMemberIndex);
-            if (cm!=null)
+            try
             {
-                if (radioButtonFire.Checked)
+                string memberInfo = listBoxCrew.Text;
+                currentCrewMemberIndex = int.Parse(memberInfo.Split(" ").First());
+                CrewMember cm = cService.GetCrewMemberById(currentCrewMemberIndex);
+                if (cm != null)
                 {
-                    textBoxIdFire.Text = (cm.Id).ToString();
-                    textBoxFNFire.Text = cm.FirstName;
-                    textBoxLNFire.Text= cm.LastName;
-                }
-                else if (radioButtonUpdateRaiting.Checked)
-                {
-                    textBoxIdUpdate.Text = (cm.Id).ToString();
+                    if (radioButtonFire.Checked)
+                    {
+                        textBoxIdFire.Text = (cm.Id).ToString();
+                        textBoxFNFire.Text = cm.FirstName;
+                        textBoxLNFire.Text = cm.LastName;
+                    }
+                    else if (radioButtonUpdateRaiting.Checked)
+                    {
+                        textBoxIdUpdate.Text = (cm.Id).ToString();
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-            currentCrewMemberIndex = int.Parse(textBoxIdUpdate.Text);
-            CrewMember cm = cService.GetCrewMemberById(currentCrewMemberIndex);
-            double newRating = double.Parse(textBoxNewRating.Text);
-            string result = cService.UpdateCrewMemberRatingById(currentCrewMemberIndex,newRating);
-            MessageBox.Show(result);
-            textBoxNewRating.Text = String.Empty;
-            textBoxIdUpdate.Text = String.Empty;
-
+            try
+            {
+                currentCrewMemberIndex = int.Parse(textBoxIdUpdate.Text);
+                CrewMember cm = cService.GetCrewMemberById(currentCrewMemberIndex);
+                double newRating = double.Parse(textBoxNewRating.Text);
+                string result = cService.UpdateCrewMemberRatingById(currentCrewMemberIndex, newRating);
+                MessageBox.Show(result);
+                textBoxNewRating.Text = String.Empty;
+                textBoxIdUpdate.Text = String.Empty;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void buttonPrevious_Click(object sender, EventArgs e)

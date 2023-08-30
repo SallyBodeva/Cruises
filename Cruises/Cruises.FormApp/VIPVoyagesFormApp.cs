@@ -27,28 +27,44 @@ namespace Cruises.FormApp
 
         private void VIPVoyagesFormApp_Load(object sender, EventArgs e)
         {
-            harbours = harbourService.GetBasicHarbourInfo();
-            harbours.ForEach(x => comboBoxFH.Items.Add(x));
-            harbours.ForEach(x => comboBoxTH.Items.Add(x));
-            ships = shipService.GetBasicShipInfo();
-            ships.ForEach(x => comboBoxShip.Items.Add(x));
+            try
+            {
+                harbours = harbourService.GetBasicHarbourInfo();
+                harbours.ForEach(x => comboBoxFH.Items.Add(x));
+                harbours.ForEach(x => comboBoxTH.Items.Add(x));
+                ships = shipService.GetBasicShipInfo();
+                ships.ForEach(x => comboBoxShip.Items.Add(x));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+         
         }
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
-            string name = textBoxName.Text;
-            string fH = comboBoxFH.Text.Split(" - ").FirstOrDefault();
-            string tH = comboBoxTH.Text.Split(" - ").FirstOrDefault();
-            int duration = int.Parse(textBoxDuration.Text);
-            string ship = comboBoxShip.Text.Split(" - ").FirstOrDefault();
-            string result = vServic.CreateVoyage(name, fH, tH, duration, ship, 200);
-            MessageBox.Show(result);
+            try
+            {
+                string name = textBoxName.Text;
+                string fH = comboBoxFH.Text.Split(" - ").FirstOrDefault();
+                string tH = comboBoxTH.Text.Split(" - ").FirstOrDefault();
+                int duration = int.Parse(textBoxDuration.Text);
+                string ship = comboBoxShip.Text.Split(" - ").FirstOrDefault();
+                string result = vServic.CreateVoyage(name, fH, tH, duration, ship, 200);
+                MessageBox.Show(result);
 
-            textBoxName.Text = string.Empty;
-            comboBoxFH.Text = string.Empty;
-            comboBoxTH.Text = string.Empty;
-            textBoxDuration.Text = string.Empty;
-            comboBoxShip.Text = string.Empty;
+                textBoxName.Text = string.Empty;
+                comboBoxFH.Text = string.Empty;
+                comboBoxTH.Text = string.Empty;
+                textBoxDuration.Text = string.Empty;
+                comboBoxShip.Text = string.Empty;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
         }
     }
 }

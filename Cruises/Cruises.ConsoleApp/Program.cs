@@ -44,8 +44,8 @@
             sb.AppendLine($"\t1: Crew members");
             sb.AppendLine($"\t2: Passengers");
             sb.AppendLine($"\t3: Voyages");
-            sb.AppendLine($"\t4: Ships");
             Console.WriteLine(sb.ToString().TrimEnd());
         }
+        //Done
     }
 }

@@ -15,6 +15,7 @@ namespace Cruises.FormApp
     {
         private ShipService shipService;
         private int shipId;
+        private int shipIndex;
         private static List<Ship> ships;
         public ShipsCatalogFormApp()
         {
@@ -24,44 +25,74 @@ namespace Cruises.FormApp
 
         private void buttonPr_Click(object sender, EventArgs e)
         {
-            ships = shipService.GetShips();
-            Ship s = ships.First();
-            if (shipId != s.Id)
+            try
             {
-                shipId--;
+                ships = shipService.GetShips();
+                Ship s = ships[0];
+                if (shipId != s.Id)
+                {
+                    shipIndex--;
+                    shipId = ships[shipIndex - 1].Id;
+                }
+                DataFill();
             }
-            DataFill();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         private void buttonNext_Click(object sender, EventArgs e)
         {
-            ships = shipService.GetShips();
-            Ship s = ships.Last();
-            Ship sF = ships.First();
-            if (shipId != s.Id)
+            try
             {
-                shipId++;
+                ships = shipService.GetShips();
+                Ship s = ships.Last();
+                Ship sF = ships.First();
+                if (shipId != s.Id)
+                {
+                    shipIndex++;
+                    shipId= ships[shipIndex].Id;
+                }
+                else
+                {
+                    shipId = sF.Id;
+                }
+                DataFill();
             }
-            else
+            catch (Exception ex)
             {
-                shipId = sF.Id;
+                MessageBox.Show(ex.Message);
             }
-            DataFill();
         }
 
         private void ShipsCatalogFormApp_Load(object sender, EventArgs e)
         {
-            ships = shipService.GetShips();
-            Ship s = ships.First();
-            shipId = s.Id;
-            DataFill();
+            try
+            {
+                ships = shipService.GetShips();
+                shipId = ships[0].Id;
+                DataFill();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
         }
         private void DataFill()
         {
-            textBoxName.Text = shipService.GetShipName(shipId);
-            textBoxModel.Text = shipService.GetShipModel(shipId);
-            textBoxCapacity.Text = shipService.GetShipCapacity(shipId).ToString();
-            textBoxTyoeName.Text = shipService.GetShipType(shipId);
-            pictureBox1.Load(shipService.GetShipImageURL(shipId));
+            try
+            {
+                textBoxName.Text = shipService.GetShipName(shipId);
+                textBoxModel.Text = shipService.GetShipModel(shipId);
+                textBoxCapacity.Text = shipService.GetShipCapacity(shipId).ToString();
+                textBoxTyoeName.Text = shipService.GetShipType(shipId);
+                pictureBox1.Load(shipService.GetShipImageURL(shipId));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
     }
