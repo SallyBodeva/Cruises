@@ -51,6 +51,7 @@
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -74,6 +75,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.buttonCreate);
             this.groupBox1.Controls.Add(this.comboBoxShip);
             this.groupBox1.Controls.Add(this.label6);
@@ -126,7 +128,7 @@
             // 
             this.textBoxDuration.Location = new System.Drawing.Point(434, 90);
             this.textBoxDuration.Name = "textBoxDuration";
-            this.textBoxDuration.Size = new System.Drawing.Size(178, 23);
+            this.textBoxDuration.Size = new System.Drawing.Size(104, 23);
             this.textBoxDuration.TabIndex = 7;
             // 
             // label5
@@ -282,6 +284,15 @@
             this.pictureBox8.TabIndex = 17;
             this.pictureBox8.TabStop = false;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(544, 94);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(45, 15);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "(hours)";
+            // 
             // VIPVoyagesFormApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -342,5 +353,6 @@
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.Label label8;
     }
 }

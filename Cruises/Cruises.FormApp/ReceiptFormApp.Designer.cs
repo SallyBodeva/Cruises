@@ -50,7 +50,7 @@
             // 
             // textBoxPrice
             // 
-            this.textBoxPrice.Location = new System.Drawing.Point(132, 303);
+            this.textBoxPrice.Location = new System.Drawing.Point(123, 303);
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(90, 23);
             this.textBoxPrice.TabIndex = 2;
@@ -60,10 +60,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(520, 391);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(518, 385);
             this.Controls.Add(this.textBoxPrice);
             this.Controls.Add(this.textBoxPhoneNum);
             this.Controls.Add(this.textBoxName);
+            this.DoubleBuffered = true;
             this.Name = "ReceiptFormApp";
             this.Text = "ReceiptFormApp";
             this.Load += new System.EventHandler(this.ReceiptFormApp_Load);
