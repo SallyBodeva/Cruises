@@ -11,3 +11,4 @@ Be prepared to handle some migrations. Copy and paste this command into your pac
 Set your startup project to "DataSeeder" and launch it to populate your database with data.
 
 You're nearly there! Just one more thing to do—enjoy the project as you steer your own Cruise Company. Bon voyage!
+Project created by Salihe Bodeva
